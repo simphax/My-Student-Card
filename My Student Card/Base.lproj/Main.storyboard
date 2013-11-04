@@ -97,11 +97,6 @@
                                     <segue destination="kTx-Ib-PqD" kind="modal" modalTransitionStyle="flipHorizontal" id="CRP-Sd-v4y"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ay-wy-noh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.73641304347826086" green="0.0" blue="0.28359667475505412" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,8 +106,6 @@
                             <constraint firstItem="vzD-Ue-Hp4" firstAttribute="top" secondItem="jTJ-yS-2wQ" secondAttribute="bottom" constant="12" id="mg0-cL-ado"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,7 +142,6 @@
                         <color key="backgroundColor" red="0.19730808423913049" green="0.0" blue="0.075984418103478835" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAZ-7h-x3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
