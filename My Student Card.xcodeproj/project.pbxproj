@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BDA3C1828467F00650091 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F4D3ADE918280F57005ABE1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADE818280F57005ABE1D /* Foundation.framework */; };
 		F4D3ADEB18280F57005ABE1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEA18280F57005ABE1D /* CoreGraphics.framework */; };
 		F4D3ADED18280F57005ABE1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEC18280F57005ABE1D /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F47BDA3B1828467F00650091 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataXMLNode.h; path = Libraries/GDataXML/GDataXMLNode.h; sourceTree = "<group>"; };
+		F47BDA3C1828467F00650091 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDataXMLNode.m; path = Libraries/GDataXML/GDataXMLNode.m; sourceTree = "<group>"; };
 		F4D3ADE518280F57005ABE1D /* My Student Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Student Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D3ADE818280F57005ABE1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4D3ADEA18280F57005ABE1D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F47BDA39182845EC00650091 /* External Code */ = {
+			isa = PBXGroup;
+			children = (
+				F47BDA3A1828461F00650091 /* GDataXML */,
+			);
+			name = "External Code";
+			sourceTree = "<group>";
+		};
+		F47BDA3A1828461F00650091 /* GDataXML */ = {
+			isa = PBXGroup;
+			children = (
+				F47BDA3B1828467F00650091 /* GDataXMLNode.h */,
+				F47BDA3C1828467F00650091 /* GDataXMLNode.m */,
+			);
+			name = GDataXML;
+			sourceTree = "<group>";
+		};
 		F4D3ADDC18280F57005ABE1D = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +140,7 @@
 		F4D3ADEE18280F57005ABE1D /* My Student Card */ = {
 			isa = PBXGroup;
 			children = (
+				F47BDA39182845EC00650091 /* External Code */,
 				F4D3AE2318281E14005ABE1D /* Provider */,
 				F4D3ADF718280F57005ABE1D /* SHXAppDelegate.h */,
 				F4D3ADF818280F57005ABE1D /* SHXAppDelegate.m */,
@@ -280,6 +301,7 @@
 				F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */,
 				F4D3ADF518280F57005ABE1D /* main.m in Sources */,
 				F4D3ADFF18280F57005ABE1D /* SHXMainViewController.m in Sources */,
+				F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +432,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Student Card/My Student Card-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "My Student Card/My Student Card-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -426,7 +454,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Student Card/My Student Card-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "My Student Card/My Student Card-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

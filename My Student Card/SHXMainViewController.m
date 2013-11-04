@@ -25,8 +25,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
     
-    [balanceProvider getBalanceWithCompletionHandler:^(int result) {
-        [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+    [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
+        if(error)
+        {
+            [[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
+        }
+        else
+        {
+            [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+        }
     }];
 }
 
