@@ -22,7 +22,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self refreshData:self];
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction) refreshData:(id)sender
+{
+    [[self balanceLabel] setText:[NSString stringWithFormat:@"Loading..."]];
+    
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
     
     [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
@@ -35,12 +49,6 @@
             [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
         }
     }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

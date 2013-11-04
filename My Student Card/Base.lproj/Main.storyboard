@@ -47,7 +47,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200 kr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVD-kC-DLS">
-                                                <rect key="frame" x="30" y="16" width="280" height="40"/>
+                                                <rect key="frame" x="30" y="5" width="280" height="61"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="43"/>
                                                 <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,12 +97,22 @@
                                     <segue destination="kTx-Ib-PqD" kind="modal" modalTransitionStyle="flipHorizontal" id="CRP-Sd-v4y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZb-p9-WAF">
+                                <rect key="frame" x="256" y="534" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <connections>
+                                    <action selector="refreshData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YzM-ux-SYk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73641304347826086" green="0.0" blue="0.28359667475505412" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vzD-Ue-Hp4" firstAttribute="top" secondItem="yZb-p9-WAF" secondAttribute="bottom" constant="12" id="Fd5-pe-aAx"/>
                             <constraint firstAttribute="centerY" secondItem="Wjy-Kc-k94" secondAttribute="centerY" id="MM1-ZT-wU9"/>
                             <constraint firstAttribute="trailing" secondItem="jTJ-yS-2wQ" secondAttribute="trailing" constant="12" id="bxh-yg-nco"/>
+                            <constraint firstItem="jTJ-yS-2wQ" firstAttribute="leading" secondItem="yZb-p9-WAF" secondAttribute="trailing" constant="8" id="hf7-ee-M7y"/>
                             <constraint firstItem="vzD-Ue-Hp4" firstAttribute="top" secondItem="jTJ-yS-2wQ" secondAttribute="bottom" constant="12" id="mg0-cL-ado"/>
                         </constraints>
                     </view>
@@ -133,7 +143,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXm-Fd-taK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXm-Fd-taK">
                                 <rect key="frame" x="285" y="535" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -144,6 +154,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.19730808423913049" green="0.0" blue="0.075984418103478835" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ayA-gC-8sl" firstAttribute="top" secondItem="mXm-Fd-taK" secondAttribute="bottom" constant="11" id="gQZ-rK-88S"/>
+                            <constraint firstAttribute="trailing" secondItem="mXm-Fd-taK" secondAttribute="trailing" constant="13" id="kJB-Ln-FYB"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAZ-7h-x3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

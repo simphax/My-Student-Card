@@ -10,6 +10,8 @@
 
 @interface SHXMainViewController : UIViewController
 
+- (IBAction) refreshData:(id)sender;
+
 @property IBOutlet UILabel *balanceLabel;
 
 @end
