@@ -11,4 +11,6 @@
 
 @interface SHXChalmersBProvider : NSObject<SHXIBalanceProvider>
 
+-(id) initWithCardNumber:(NSString *)number;
+
 @end

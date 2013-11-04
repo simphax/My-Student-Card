@@ -106,6 +106,9 @@
                             <constraint firstItem="vzD-Ue-Hp4" firstAttribute="top" secondItem="jTJ-yS-2wQ" secondAttribute="bottom" constant="12" id="mg0-cL-ado"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="balanceLabel" destination="GVD-kC-DLS" id="1wT-NL-5gf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,7 +9,7 @@
 #import "SHXChalmersBProviderTest.h"
 #import "SHXChalmersBProvider.h"
 
-@interface SHXChalmersBProviderTest () {
+@interface SHXChalmersBProviderTest (){
     SHXChalmersBProvider *provider;
 }
 
@@ -20,7 +20,7 @@
 - (void)setUp
 {
     [super setUp];
-    provider = [[SHXChalmersBProvider alloc] init];
+    provider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
 }
 
 - (void)tearDown
@@ -30,9 +30,10 @@
 
 - (void)testGetBalance
 {
-    int balance = [provider getBalance];
-    
-    NSLog(@"Balance is: %i",balance);
+    //We need something that waits for the asynchronus result.
+    [provider getBalanceWithCompletionHandler:^(int result) {
+        NSLog(@"Balance: %i",result);
+    }];
 }
 
 @end

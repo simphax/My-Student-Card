@@ -7,8 +7,13 @@
 //
 
 #import "SHXMainViewController.h"
+#import "SHXChalmersBProvider.h"
 
 @interface SHXMainViewController ()
+{
+@private
+    id<SHXIBalanceProvider> balanceProvider;
+}
 
 @end
 
@@ -18,6 +23,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    
+    [balanceProvider getBalanceWithCompletionHandler:^(int result) {
+        [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

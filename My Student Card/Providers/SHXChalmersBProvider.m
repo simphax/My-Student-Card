@@ -8,11 +8,42 @@
 
 #import "SHXChalmersBProvider.h"
 
+@interface SHXChalmersBProvider() <NSURLConnectionDataDelegate>
+{
+@private
+    NSString *cardNumber;
+}
+@end
+
 @implementation SHXChalmersBProvider
 
--(int)getBalance
+-(id) initWithCardNumber:(NSString *)number
 {
-    return 200;
+    self = [super init];
+    
+    cardNumber = number;
+    
+    return self;
+}
+
+-(void)getBalanceWithCompletionHandler:(void(^)(int))handler
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://kortladdning.chalmerskonferens.se/bgw.aspx?type=getCardAndArticles&card=%@",cardNumber];
+    
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:3.0];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               NSLog(@"Response: %@",response);
+                               NSString *datastr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               NSLog(@"Data: %@",datastr);
+                               handler(250);
+                           }];
 }
 
 @end

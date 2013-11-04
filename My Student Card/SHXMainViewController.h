@@ -10,4 +10,6 @@
 
 @interface SHXMainViewController : UIViewController
 
+@property IBOutlet UILabel *balanceLabel;
+
 @end
