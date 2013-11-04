@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHXViewController : UIViewController
+@interface SHXMainViewController : UIViewController
 
 @end

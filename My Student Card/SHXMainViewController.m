@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Simphax. All rights reserved.
 //
 
-#import "SHXViewController.h"
+#import "SHXMainViewController.h"
 
-@interface SHXViewController ()
+@interface SHXMainViewController ()
 
 @end
 
-@implementation SHXViewController
+@implementation SHXMainViewController
 
 - (void)viewDidLoad
 {
