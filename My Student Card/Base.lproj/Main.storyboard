@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="269" y="235"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="c4j-EB-oQ2">
             <objects>
-                <viewController id="kTx-Ib-PqD" sceneMemberID="viewController">
+                <viewController id="kTx-Ib-PqD" customClass="SHXSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xlg-8c-3M0"/>
                         <viewControllerLayoutGuide type="bottom" id="ayA-gC-8sl"/>
@@ -141,6 +141,9 @@
                                 <rect key="frame" x="285" y="535" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <connections>
+                                    <action selector="dismissModal:" destination="kTx-Ib-PqD" eventType="touchUpInside" id="l39-GJ-YFQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19730808423913049" green="0.0" blue="0.075984418103478835" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAZ-7h-x3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722" y="521"/>
+            <point key="canvasLocation" x="734" y="235"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

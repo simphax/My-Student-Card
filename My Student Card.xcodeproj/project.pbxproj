@@ -20,7 +20,9 @@
 		F4D3AE0918280F57005ABE1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADE818280F57005ABE1D /* Foundation.framework */; };
 		F4D3AE0A18280F57005ABE1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEC18280F57005ABE1D /* UIKit.framework */; };
 		F4D3AE1218280F57005ABE1D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D3AE1018280F57005ABE1D /* InfoPlist.strings */; };
-		F4D3AE1418280F57005ABE1D /* My_Student_CardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE1318280F57005ABE1D /* My_Student_CardTests.m */; };
+		F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2118281CF6005ABE1D /* SHXSettingsViewController.m */; };
+		F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */; };
+		F4D3AE2A18281FE7005ABE1D /* SHXChalmersBProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,13 @@
 		F4D3AE0718280F57005ABE1D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F4D3AE0F18280F57005ABE1D /* My Student CardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "My Student CardTests-Info.plist"; sourceTree = "<group>"; };
 		F4D3AE1118280F57005ABE1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F4D3AE1318280F57005ABE1D /* My_Student_CardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_Student_CardTests.m; sourceTree = "<group>"; };
+		F4D3AE2018281CF6005ABE1D /* SHXSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXSettingsViewController.h; sourceTree = "<group>"; };
+		F4D3AE2118281CF6005ABE1D /* SHXSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXSettingsViewController.m; sourceTree = "<group>"; };
+		F4D3AE2418281E8A005ABE1D /* SHXIBalanceProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHXIBalanceProvider.h; path = Providers/SHXIBalanceProvider.h; sourceTree = "<group>"; };
+		F4D3AE2518281F25005ABE1D /* SHXChalmersBProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersBProvider.h; path = Providers/SHXChalmersBProvider.h; sourceTree = "<group>"; };
+		F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersBProvider.m; path = Providers/SHXChalmersBProvider.m; sourceTree = "<group>"; };
+		F4D3AE2818281FE7005ABE1D /* SHXChalmersBProviderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXChalmersBProviderTest.h; sourceTree = "<group>"; };
+		F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXChalmersBProviderTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +120,14 @@
 		F4D3ADEE18280F57005ABE1D /* My Student Card */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3AE2318281E14005ABE1D /* Provider */,
 				F4D3ADF718280F57005ABE1D /* SHXAppDelegate.h */,
 				F4D3ADF818280F57005ABE1D /* SHXAppDelegate.m */,
 				F4D3ADFA18280F57005ABE1D /* Main.storyboard */,
 				F4D3ADFD18280F57005ABE1D /* SHXMainViewController.h */,
 				F4D3ADFE18280F57005ABE1D /* SHXMainViewController.m */,
+				F4D3AE2018281CF6005ABE1D /* SHXSettingsViewController.h */,
+				F4D3AE2118281CF6005ABE1D /* SHXSettingsViewController.m */,
 				F4D3AE0018280F57005ABE1D /* Images.xcassets */,
 				F4D3ADEF18280F57005ABE1D /* Supporting Files */,
 			);
@@ -137,8 +148,9 @@
 		F4D3AE0D18280F57005ABE1D /* My Student CardTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4D3AE1318280F57005ABE1D /* My_Student_CardTests.m */,
 				F4D3AE0E18280F57005ABE1D /* Supporting Files */,
+				F4D3AE2818281FE7005ABE1D /* SHXChalmersBProviderTest.h */,
+				F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */,
 			);
 			path = "My Student CardTests";
 			sourceTree = "<group>";
@@ -150,6 +162,16 @@
 				F4D3AE1018280F57005ABE1D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4D3AE2318281E14005ABE1D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3AE2418281E8A005ABE1D /* SHXIBalanceProvider.h */,
+				F4D3AE2518281F25005ABE1D /* SHXChalmersBProvider.h */,
+				F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */,
+			);
+			name = Provider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D3ADF918280F57005ABE1D /* SHXAppDelegate.m in Sources */,
+				F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */,
+				F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */,
 				F4D3ADF518280F57005ABE1D /* main.m in Sources */,
 				F4D3ADFF18280F57005ABE1D /* SHXMainViewController.m in Sources */,
 			);
@@ -263,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4D3AE1418280F57005ABE1D /* My_Student_CardTests.m in Sources */,
+				F4D3AE2A18281FE7005ABE1D /* SHXChalmersBProviderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +494,7 @@
 				F4D3AE1918280F57005ABE1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4D3AE1A18280F57005ABE1D /* Build configuration list for PBXNativeTarget "My Student CardTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +503,7 @@
 				F4D3AE1C18280F57005ABE1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
