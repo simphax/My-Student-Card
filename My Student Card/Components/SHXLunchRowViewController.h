@@ -14,6 +14,7 @@
 @property SHXLunchRow *lunchRow;
 
 @property IBOutlet UILabel *mealLabel;
+@property IBOutlet UILabel *typeLabel;
 
 @property NSInteger pageIndex;
 

@@ -29,6 +29,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [[self mealLabel] setText:[[self lunchRow] meal]];
+    [[self typeLabel] setText:[[[self lunchRow] type] uppercaseString]];
 }
 
 - (void)didReceiveMemoryWarning

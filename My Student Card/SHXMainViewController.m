@@ -17,6 +17,7 @@
 @private
     id<SHXIBalanceProvider> balanceProvider;
     id<SHXILunchProvider> lunchProvider;
+    NSArray *lunchRows;
 }
 
 @end
@@ -44,7 +45,6 @@
     [[self.pageController view] setFrame:[[self lunchesView] bounds]];
     
     SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
-    
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -85,10 +85,17 @@
     
     [lunchProvider getLunchListWithCompletionHandler:^(NSArray *lunchList, NSError *error) {
         
+        lunchRows = lunchList;
+        
         for(SHXLunchRow *row in lunchList)
         {
             NSLog(@"%@",[row meal]);
         }
+        
+        SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
+        NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+        
+        [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
     }];
     
@@ -99,12 +106,18 @@
     SHXLunchRowViewController *lunchRowView = [[SHXLunchRowViewController alloc] initWithNibName:@"SHXLunchRowViewController" bundle:nil];
     lunchRowView.pageIndex = index;
     
-    SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
-    [lunchRow setMeal:[NSString stringWithFormat:@"Test %i",index]];
-    [lunchRowView setLunchRow:lunchRow];
+    if([lunchRows count] > index)
+    {
+        [lunchRowView setLunchRow:[lunchRows objectAtIndex:index]];
+    }
+    else
+    {
+        SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
+        [lunchRow setMeal:[NSString stringWithFormat:@"ERROR, index: %i",index]];
+        [lunchRowView setLunchRow:lunchRow];
+    }
     
     return lunchRowView;
-    
 }
 
 #pragma mark UIPageViewControllerDataSource
@@ -129,7 +142,7 @@
     
     index++;
     
-    if (index == 5) {
+    if (index == [lunchRows count]) {
         return nil;
     }
     
@@ -139,7 +152,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return 5;
+    return [lunchRows count];
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
