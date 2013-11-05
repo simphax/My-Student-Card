@@ -31,9 +31,13 @@
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
     lunchProvider = [[SHXChalmersLProvider alloc] init];
     
-    [self initPageController];
+    //Register for notification of when the application is resumed.
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(applicationDidBecomeActive:)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
     
-    [self refreshData:self];
+    [self initPageController];
     
 }
 
@@ -56,6 +60,11 @@
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
     pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.7 green:0 blue:0.2 alpha:1.0];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [self refreshData:self];
 }
 
 - (void)didReceiveMemoryWarning

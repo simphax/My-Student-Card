@@ -102,7 +102,7 @@
                                
                                if([allLunchRows count] == 0 && !error)
                                {
-                                   NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:@"Could not get balance. Unknown reason."
+                                   NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:@"Could not get any lunches. Unknown reason."
                                                                                          forKey:@"error"];
                                    error = [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:1001 userInfo:errorInfo];
                                }
