@@ -142,7 +142,7 @@
     
     index++;
     
-    if (index == [lunchRows count]) {
+    if (index == [lunchRows count] || [lunchRows count] == 0) {
         return nil;
     }
     
@@ -152,7 +152,14 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return [lunchRows count];
+    if([lunchRows count] > 0)
+    {
+        return [lunchRows count];
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {

@@ -13,19 +13,101 @@
 
 -(void)getLunchListWithCompletionHandler:(void(^)(NSArray *lunchlist, NSError *error))handler
 {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSString *restaurant = @"Kårrestaurangen";
+    NSString *languageHandle = @"Sv";
     
-    SHXLunchRow *row = [[SHXLunchRow alloc] init];
-    [row setType:@"Xpress"];
-    [row setMeal:@"Kyckling, \"grön curry\", jasminris"];
-    [array addObject:row];
+    NSString *urlString = @"http://screens.lskitchen.se/rest1";
     
-    row = [[SHXLunchRow alloc] init];
-    [row setType:@"Classic Kött"];
-    [row setMeal:@"Stekt fläsk, raggmunk, lingon"];
-    [array addObject:row];
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
     
-    handler(array,nil);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:10.0];
+    [request setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               NSMutableArray *allLunchRows = [[NSMutableArray alloc] init];
+                               
+                               if(!error)
+                               {
+                                   NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                   id object = [NSJSONSerialization
+                                                JSONObjectWithData:data
+                                                options:0
+                                                error:&error];
+                                   if(!error)
+                                   {
+                                       //Traversing step by step through the JSON result.
+                                       if([object isKindOfClass:[NSDictionary class]])
+                                       {
+                                           id items = [object objectForKey:@"Items"];
+                                           if([items isKindOfClass:[NSArray class]])
+                                           {
+                                               for(id item in items)
+                                               {
+                                                   NSString *type = nil;
+                                                   NSString *meal = nil;
+                                                   
+                                                   
+                                                   if([item isKindOfClass:[NSDictionary class]])
+                                                   {
+                                                       NSDictionary *lunchItem = item;
+                                                       
+                                                       id name = [lunchItem objectForKey:@"Name"];
+                                                       if([name isKindOfClass:[NSString class]])
+                                                       {
+                                                           type = name;
+                                                       }
+                                                       
+                                                       id values = [lunchItem objectForKey:@"Values"];
+                                                       if([values isKindOfClass:[NSArray class]])
+                                                       {
+                                                           NSArray *mealInfos = values;
+                                                           
+                                                           for(id mealInfo in mealInfos)
+                                                           {
+                                                               if([mealInfo isKindOfClass:[NSDictionary class]])
+                                                               {
+                                                                   id language = [mealInfo objectForKey:@"LanguageName"];
+                                                                   
+                                                                   if([languageHandle isEqual:language])
+                                                                   {
+                                                                       id mealDescription = [mealInfo objectForKey:@"Value"];
+                                                                       if([mealDescription isKindOfClass:[NSString class]])
+                                                                       {
+                                                                           meal = mealDescription;
+                                                                       }
+                                                                   }
+                                                               }
+                                                           }
+                                                       }
+                                                   }
+                                                   
+                                                   if(type != nil && meal != nil)
+                                                   {
+                                                       SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
+                                                       [lunchRow setRestaurant:restaurant];
+                                                       [lunchRow setType:type];
+                                                       [lunchRow setMeal:meal];
+                                                       [allLunchRows addObject:lunchRow];
+                                                   }
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                               
+                               if([allLunchRows count] == 0 && !error)
+                               {
+                                   NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:@"Could not get balance. Unknown reason."
+                                                                                         forKey:@"error"];
+                                   error = [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:1001 userInfo:errorInfo];
+                               }
+                               
+                               handler(allLunchRows, error);
+                           }];
 }
 
 @end
