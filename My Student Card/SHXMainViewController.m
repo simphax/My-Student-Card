@@ -10,6 +10,7 @@
 #import "SHXChalmersBProvider.h"
 #import "SHXChalmersLProvider.h"
 #import "SHXLunchRow.h"
+#import "SHXLunchRowViewController.h"
 
 @interface SHXMainViewController ()
 {
@@ -29,8 +30,32 @@
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
     lunchProvider = [[SHXChalmersLProvider alloc] init];
     
+    [self initPageController];
+    
     [self refreshData:self];
     
+}
+
+-(void) initPageController
+{
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
+    self.pageController.dataSource = self;
+    [[self.pageController view] setFrame:[[self lunchesView] bounds]];
+    
+    SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
+    
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self addChildViewController:self.pageController];
+    [[self lunchesView] addSubview:[self.pageController view]];
+    [self.pageController didMoveToParentViewController:self];
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +92,59 @@
         
     }];
     
+}
+
+- (SHXLunchRowViewController *)lunchRowAtIndex:(NSUInteger)index {
+    
+    SHXLunchRowViewController *lunchRowView = [[SHXLunchRowViewController alloc] initWithNibName:@"SHXLunchRowViewController" bundle:nil];
+    lunchRowView.pageIndex = index;
+    
+    SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
+    [lunchRow setMeal:[NSString stringWithFormat:@"Test %i",index]];
+    [lunchRowView setLunchRow:lunchRow];
+    
+    return lunchRowView;
+    
+}
+
+#pragma mark UIPageViewControllerDataSource
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(SHXLunchRowViewController *)viewController pageIndex];
+    
+    if (index == 0) {
+        return nil;
+    }
+    
+    // Decrease the index by 1 to return
+    index--;
+    
+    return [self lunchRowAtIndex:index];
+    
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(SHXLunchRowViewController *)viewController pageIndex];
+    
+    index++;
+    
+    if (index == 5) {
+        return nil;
+    }
+    
+    return [self lunchRowAtIndex:index];
+    
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    // The number of items reflected in the page indicator.
+    return 5;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    // The selected item reflected in the page indicator.
+    return 0;
 }
 
 @end

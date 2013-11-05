@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHXMainViewController : UIViewController
+@interface SHXMainViewController : UIViewController <UIPageViewControllerDataSource>
 
 - (IBAction) refreshData:(id)sender;
+
+@property UIPageViewController *pageController;
 
 @property IBOutlet UILabel *balanceLabel;
 @property IBOutlet UIView *contentView;
 @property IBOutlet UIView *refreshStatusView;
+
+@property IBOutlet UIView *lunchesView;
 
 @end

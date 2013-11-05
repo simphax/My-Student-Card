@@ -26,6 +26,8 @@
 		F4D3AE2A18281FE7005ABE1D /* SHXChalmersBProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */; };
 		F4E8537D1829563D00B77D4C /* SHXLunchRow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8537C1829563D00B77D4C /* SHXLunchRow.m */; };
 		F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */; };
+		F4E8538418295CEF00B77D4C /* SHXLunchRowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8538218295CEF00B77D4C /* SHXLunchRowViewController.m */; };
+		F4E8538518295CEF00B77D4C /* SHXLunchRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E8538318295CEF00B77D4C /* SHXLunchRowViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		F4E8537C1829563D00B77D4C /* SHXLunchRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXLunchRow.m; path = Providers/SHXLunchRow.m; sourceTree = "<group>"; };
 		F4E8537E1829568C00B77D4C /* SHXChalmersLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersLProvider.h; path = Providers/SHXChalmersLProvider.h; sourceTree = "<group>"; };
 		F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersLProvider.m; path = Providers/SHXChalmersLProvider.m; sourceTree = "<group>"; };
+		F4E8538118295CEF00B77D4C /* SHXLunchRowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXLunchRowViewController.h; path = Components/SHXLunchRowViewController.h; sourceTree = "<group>"; };
+		F4E8538218295CEF00B77D4C /* SHXLunchRowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXLunchRowViewController.m; path = Components/SHXLunchRowViewController.m; sourceTree = "<group>"; };
+		F4E8538318295CEF00B77D4C /* SHXLunchRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHXLunchRowViewController.xib; path = Components/SHXLunchRowViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,7 @@
 		F4D3ADEE18280F57005ABE1D /* My Student Card */ = {
 			isa = PBXGroup;
 			children = (
+				F4E8538618295CF500B77D4C /* UI Components */,
 				F47BDA39182845EC00650091 /* External Code */,
 				F4D3AE2318281E14005ABE1D /* Provider */,
 				F4D3ADF718280F57005ABE1D /* SHXAppDelegate.h */,
@@ -205,6 +211,16 @@
 				F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */,
 			);
 			name = Provider;
+			sourceTree = "<group>";
+		};
+		F4E8538618295CF500B77D4C /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				F4E8538118295CEF00B77D4C /* SHXLunchRowViewController.h */,
+				F4E8538218295CEF00B77D4C /* SHXLunchRowViewController.m */,
+				F4E8538318295CEF00B77D4C /* SHXLunchRowViewController.xib */,
+			);
+			name = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +305,7 @@
 			files = (
 				F4D3AE0118280F57005ABE1D /* Images.xcassets in Resources */,
 				F4D3ADF318280F57005ABE1D /* InfoPlist.strings in Resources */,
+				F4E8538518295CEF00B77D4C /* SHXLunchRowViewController.xib in Resources */,
 				F4D3ADFC18280F57005ABE1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +327,7 @@
 			files = (
 				F4E8537D1829563D00B77D4C /* SHXLunchRow.m in Sources */,
 				F4D3ADF918280F57005ABE1D /* SHXAppDelegate.m in Sources */,
+				F4E8538418295CEF00B77D4C /* SHXLunchRowViewController.m in Sources */,
 				F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */,
 				F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */,
 				F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */,
