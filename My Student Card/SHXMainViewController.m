@@ -87,11 +87,6 @@
         
         lunchRows = lunchList;
         
-        for(SHXLunchRow *row in lunchList)
-        {
-            NSLog(@"%@",[row meal]);
-        }
-        
         SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
         NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
         

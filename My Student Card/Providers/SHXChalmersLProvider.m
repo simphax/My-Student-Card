@@ -32,7 +32,6 @@
                                
                                if(!error)
                                {
-                                   NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                    id object = [NSJSONSerialization
                                                 JSONObjectWithData:data
                                                 options:0
