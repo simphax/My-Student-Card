@@ -13,5 +13,7 @@
 - (IBAction) refreshData:(id)sender;
 
 @property IBOutlet UILabel *balanceLabel;
+@property IBOutlet UIView *contentView;
+@property IBOutlet UIView *refreshStatusView;
 
 @end

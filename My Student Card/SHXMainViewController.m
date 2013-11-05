@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    
     [self refreshData:self];
     
 }
@@ -35,9 +37,8 @@
 
 - (IBAction) refreshData:(id)sender
 {
-    [[self balanceLabel] setText:[NSString stringWithFormat:@"Loading..."]];
-    
-    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    [[self contentView] setHidden:YES];
+    [[self refreshStatusView] setHidden:NO];
     
     [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
         if(error)
@@ -47,8 +48,12 @@
         else
         {
             [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+            
+            [[self refreshStatusView] setHidden:YES];
+            [[self contentView] setHidden:NO];
         }
     }];
+    
 }
 
 @end
