@@ -54,8 +54,8 @@
     [self.pageController didMoveToParentViewController:self];
     
     UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.7 green:0 blue:0.2 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning
