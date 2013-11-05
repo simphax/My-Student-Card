@@ -8,11 +8,14 @@
 
 #import "SHXMainViewController.h"
 #import "SHXChalmersBProvider.h"
+#import "SHXChalmersLProvider.h"
+#import "SHXLunchRow.h"
 
 @interface SHXMainViewController ()
 {
 @private
     id<SHXIBalanceProvider> balanceProvider;
+    id<SHXILunchProvider> lunchProvider;
 }
 
 @end
@@ -24,6 +27,7 @@
     [super viewDidLoad];
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    lunchProvider = [[SHXChalmersLProvider alloc] init];
     
     [self refreshData:self];
     
@@ -52,6 +56,15 @@
             [[self refreshStatusView] setHidden:YES];
             [[self contentView] setHidden:NO];
         }
+    }];
+    
+    [lunchProvider getLunchListWithCompletionHandler:^(NSArray *lunchList, NSError *error) {
+        
+        for(SHXLunchRow *row in lunchList)
+        {
+            NSLog(@"%@",[row meal]);
+        }
+        
     }];
     
 }

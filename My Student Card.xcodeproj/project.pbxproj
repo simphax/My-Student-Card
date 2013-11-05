@@ -24,6 +24,8 @@
 		F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2118281CF6005ABE1D /* SHXSettingsViewController.m */; };
 		F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */; };
 		F4D3AE2A18281FE7005ABE1D /* SHXChalmersBProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */; };
+		F4E8537D1829563D00B77D4C /* SHXLunchRow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8537C1829563D00B77D4C /* SHXLunchRow.m */; };
+		F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,11 @@
 		F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersBProvider.m; path = Providers/SHXChalmersBProvider.m; sourceTree = "<group>"; };
 		F4D3AE2818281FE7005ABE1D /* SHXChalmersBProviderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXChalmersBProviderTest.h; sourceTree = "<group>"; };
 		F4D3AE2918281FE7005ABE1D /* SHXChalmersBProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXChalmersBProviderTest.m; sourceTree = "<group>"; };
+		F4E8537A182955E500B77D4C /* SHXILunchProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHXILunchProvider.h; path = Providers/SHXILunchProvider.h; sourceTree = "<group>"; };
+		F4E8537B1829563D00B77D4C /* SHXLunchRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXLunchRow.h; path = Providers/SHXLunchRow.h; sourceTree = "<group>"; };
+		F4E8537C1829563D00B77D4C /* SHXLunchRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXLunchRow.m; path = Providers/SHXLunchRow.m; sourceTree = "<group>"; };
+		F4E8537E1829568C00B77D4C /* SHXChalmersLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersLProvider.h; path = Providers/SHXChalmersLProvider.h; sourceTree = "<group>"; };
+		F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersLProvider.m; path = Providers/SHXChalmersLProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +198,11 @@
 				F4D3AE2418281E8A005ABE1D /* SHXIBalanceProvider.h */,
 				F4D3AE2518281F25005ABE1D /* SHXChalmersBProvider.h */,
 				F4D3AE2618281F25005ABE1D /* SHXChalmersBProvider.m */,
+				F4E8537A182955E500B77D4C /* SHXILunchProvider.h */,
+				F4E8537B1829563D00B77D4C /* SHXLunchRow.h */,
+				F4E8537C1829563D00B77D4C /* SHXLunchRow.m */,
+				F4E8537E1829568C00B77D4C /* SHXChalmersLProvider.h */,
+				F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */,
 			);
 			name = Provider;
 			sourceTree = "<group>";
@@ -296,7 +308,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E8537D1829563D00B77D4C /* SHXLunchRow.m in Sources */,
 				F4D3ADF918280F57005ABE1D /* SHXAppDelegate.m in Sources */,
+				F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */,
 				F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */,
 				F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */,
 				F4D3ADF518280F57005ABE1D /* main.m in Sources */,
