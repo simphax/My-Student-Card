@@ -13,6 +13,8 @@
 
 -(void)getLunchListWithCompletionHandler:(void(^)(NSArray *lunchlist, NSError *error))handler
 {
+    NSString *firstType = @"Xpress";
+    
     NSString *restaurant = @"Kårrestaurangen";
     NSString *languageHandle = @"Sv";
     
@@ -38,7 +40,7 @@
                                                 error:&error];
                                    if(!error)
                                    {
-                                       //Traversing step by step through the JSON result.
+                                       //Traversing step by step through the JSON result to find our information.
                                        if([object isKindOfClass:[NSDictionary class]])
                                        {
                                            id items = [object objectForKey:@"Items"];
@@ -84,7 +86,7 @@
                                                        }
                                                    }
                                                    
-                                                   if(type != nil && meal != nil)
+                                                   if(type != nil && meal != nil) //We were able to get a full specification of a lunch
                                                    {
                                                        SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
                                                        [lunchRow setRestaurant:restaurant];
@@ -103,6 +105,16 @@
                                    NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:@"Could not get balance. Unknown reason."
                                                                                          forKey:@"error"];
                                    error = [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:1001 userInfo:errorInfo];
+                               }
+                               
+                               //Move Xpress to first position.
+                               for(SHXLunchRow *row in [allLunchRows copy])
+                               {
+                                   if([[row type] isEqualToString:firstType])
+                                   {
+                                       [allLunchRows removeObject:row];
+                                       [allLunchRows insertObject:row atIndex:0];
+                                   }
                                }
                                
                                handler(allLunchRows, error);
