@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
-    lunchProvider = [[SHXChalmersLProvider alloc] init];
+    lunchProvider = [[SHXChalmersLProvider alloc] initWithLocation:SHXChLLocationJohannebergKarrestaurangen];
     
     //Register for notification of when the application is resumed.
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -92,7 +92,7 @@
         }
     }];
     
-    [lunchProvider getLunchListWithCompletionHandler:^(NSArray *lunchList, NSError *error) {
+    [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
         
         lunchRows = lunchList;
         

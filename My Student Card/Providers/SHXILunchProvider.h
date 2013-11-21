@@ -10,6 +10,6 @@
 
 @protocol SHXILunchProvider <NSObject>
 
--(void)getLunchListWithCompletionHandler:(void(^)(NSArray *lunchList, NSError *error))handler;
+-(void)getLunchesAt:(NSDate*)date completionHandler:(void(^)(NSArray *lunchlist, NSError *error))handler;
 
 @end

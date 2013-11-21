@@ -10,16 +10,51 @@
 #import "SHXLunchRow.h"
 #import "GDataXMLNode.h"
 
+@interface SHXChalmersLProvider() <NSURLConnectionDataDelegate>
+{
+@private
+    SHXChLLocation currentLocation;
+}
+@end
+
 @implementation SHXChalmersLProvider
 
--(void)getLunchListWithCompletionHandler:(void(^)(NSArray *lunchlist, NSError *error))handler
+-(id) init
+{
+    self = [super init];
+    return [self initWithLocation:SHXChLLocationJohannebergKarrestaurangen];
+}
+
+-(id) initWithLocation:(SHXChLLocation)location
+{
+    self = [super init];
+    currentLocation = location;
+    return self;
+}
+
+-(void)getLunchesAt:(NSDate*)date completionHandler:(void(^)(NSArray *lunchlist, NSError *error))handler
 {
     NSString *firstType = @"Xpress";
     
     NSString *restaurant = @"Kårrestaurangen";
     NSString *languageHandle = @"sv";
+    NSString *urlString = @"";
     
-    NSString *urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/2013-11-21.rss",languageHandle];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr = [dateFormatter stringFromDate:date];
+    
+    switch (currentLocation) {
+        case SHXChLLocationJohannebergKarrestaurangen:
+            urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/%@.rss",languageHandle,dateStr];
+            break;
+        case SHXChLLocationLindholmenKokboken:
+            urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/lindholmen/kokboken/%@/%@.rss",languageHandle,dateStr];
+            break;
+            
+        default:
+            break;
+    }
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
