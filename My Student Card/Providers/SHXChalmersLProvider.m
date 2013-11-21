@@ -13,22 +13,16 @@
 @interface SHXChalmersLProvider() <NSURLConnectionDataDelegate>
 {
 @private
-    SHXChLLocation currentLocation;
+    SHXChalmersRestaurant *currentRestaurant;
 }
 @end
 
 @implementation SHXChalmersLProvider
 
--(id) init
+-(id) initWithRestaurant:(SHXChalmersRestaurant*)restaurant
 {
     self = [super init];
-    return [self initWithLocation:SHXChLLocationJohannebergKarrestaurangen];
-}
-
--(id) initWithLocation:(SHXChLLocation)location
-{
-    self = [super init];
-    currentLocation = location;
+    currentRestaurant = restaurant;
     return self;
 }
 
@@ -36,31 +30,18 @@
 {
     NSString *firstType = @"Xpress";
     
-    NSString *restaurant = @"Kårrestaurangen";
-    NSString *languageHandle = @"sv";
-    NSString *urlString = @"";
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormatter stringFromDate:date];
     
-    switch (currentLocation) {
-        case SHXChLLocationJohannebergKarrestaurangen:
-            urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/%@.rss",languageHandle,dateStr];
-            break;
-        case SHXChLLocationLindholmenKokboken:
-            urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/lindholmen/kokboken/%@/%@.rss",languageHandle,dateStr];
-            break;
-            
-        default:
-            break;
-    }
+    NSString *restaurantName = @"Kårrestaurangen";
+    NSString *languageHandle = @"sv";
+    NSString *urlString = [NSString stringWithFormat:[currentRestaurant feedUrl],languageHandle,dateStr];
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:10.0];
-    [request setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -100,7 +81,7 @@
                                                if(![titleStr  isEqual: @""] && ![descStr  isEqual: @""])
                                                {
                                                    SHXLunchRow *newRow = [[SHXLunchRow alloc] init];
-                                                   [newRow setRestaurant:restaurant];
+                                                   [newRow setRestaurant:restaurantName];
                                                    [newRow setType:titleStr];
                                                    [newRow setMeal:descStr];
                                                    

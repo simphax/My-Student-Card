@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F403038D183E7566003289EC /* SHXChalmersRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = F403038C183E7566003289EC /* SHXChalmersRestaurant.m */; };
 		F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BDA3C1828467F00650091 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F4D3ADE918280F57005ABE1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADE818280F57005ABE1D /* Foundation.framework */; };
 		F4D3ADEB18280F57005ABE1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEA18280F57005ABE1D /* CoreGraphics.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F403038B183E7566003289EC /* SHXChalmersRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersRestaurant.h; path = Providers/SHXChalmersRestaurant.h; sourceTree = "<group>"; };
+		F403038C183E7566003289EC /* SHXChalmersRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersRestaurant.m; path = Providers/SHXChalmersRestaurant.m; sourceTree = "<group>"; };
 		F47BDA3B1828467F00650091 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataXMLNode.h; path = Libraries/GDataXML/GDataXMLNode.h; sourceTree = "<group>"; };
 		F47BDA3C1828467F00650091 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDataXMLNode.m; path = Libraries/GDataXML/GDataXMLNode.m; sourceTree = "<group>"; };
 		F4D3ADE518280F57005ABE1D /* My Student Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Student Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +157,7 @@
 			children = (
 				F4E8538618295CF500B77D4C /* UI Components */,
 				F47BDA39182845EC00650091 /* External Code */,
-				F4D3AE2318281E14005ABE1D /* Provider */,
+				F4D3AE2318281E14005ABE1D /* Providers */,
 				F4D3ADF718280F57005ABE1D /* SHXAppDelegate.h */,
 				F4D3ADF818280F57005ABE1D /* SHXAppDelegate.m */,
 				F4D3ADFA18280F57005ABE1D /* Main.storyboard */,
@@ -198,7 +201,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F4D3AE2318281E14005ABE1D /* Provider */ = {
+		F4D3AE2318281E14005ABE1D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
 				F4D3AE2418281E8A005ABE1D /* SHXIBalanceProvider.h */,
@@ -209,8 +212,10 @@
 				F4E8537C1829563D00B77D4C /* SHXLunchRow.m */,
 				F4E8537E1829568C00B77D4C /* SHXChalmersLProvider.h */,
 				F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */,
+				F403038B183E7566003289EC /* SHXChalmersRestaurant.h */,
+				F403038C183E7566003289EC /* SHXChalmersRestaurant.m */,
 			);
-			name = Provider;
+			name = Providers;
 			sourceTree = "<group>";
 		};
 		F4E8538618295CF500B77D4C /* UI Components */ = {
@@ -334,6 +339,7 @@
 				F4D3ADF518280F57005ABE1D /* main.m in Sources */,
 				F4D3ADFF18280F57005ABE1D /* SHXMainViewController.m in Sources */,
 				F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */,
+				F403038D183E7566003289EC /* SHXChalmersRestaurant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

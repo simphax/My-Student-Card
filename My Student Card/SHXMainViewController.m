@@ -29,7 +29,13 @@
     [super viewDidLoad];
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
-    lunchProvider = [[SHXChalmersLProvider alloc] initWithLocation:SHXChLLocationJohannebergKarrestaurangen];
+    
+    SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
+    
+    [restaurant setName:@"Kårrestaurangen"];
+    [restaurant setFeedUrl:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/%@.rss"];
+    
+    lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
     
     //Register for notification of when the application is resumed.
     [[NSNotificationCenter defaultCenter]addObserver:self
