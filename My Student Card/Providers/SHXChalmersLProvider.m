@@ -8,6 +8,7 @@
 
 #import "SHXChalmersLProvider.h"
 #import "SHXLunchRow.h"
+#import "GDataXMLNode.h"
 
 @implementation SHXChalmersLProvider
 
@@ -16,9 +17,9 @@
     NSString *firstType = @"Xpress";
     
     NSString *restaurant = @"Kårrestaurangen";
-    NSString *languageHandle = @"Sv";
+    NSString *languageHandle = @"sv";
     
-    NSString *urlString = @"http://screens.lskitchen.se/rest1";
+    NSString *urlString = [NSString stringWithFormat:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/2013-11-21.rss",languageHandle];
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
@@ -34,69 +35,45 @@
                                
                                if(!error)
                                {
-                                   id object = [NSJSONSerialization
-                                                JSONObjectWithData:data
-                                                options:0
-                                                error:&error];
+                                   GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:data
+                                                                                          options:0 error:&error];
                                    if(!error)
                                    {
-                                       //Traversing step by step through the JSON result to find our information.
-                                       if([object isKindOfClass:[NSDictionary class]])
+                                       NSArray *itemXmlSearch = [doc nodesForXPath:@"//item" error:&error];
+                                       
+                                       if([itemXmlSearch count] > 0)
                                        {
-                                           id items = [object objectForKey:@"Items"];
-                                           if([items isKindOfClass:[NSArray class]])
+                                           for(GDataXMLElement *itemElem in itemXmlSearch)
                                            {
-                                               for(id item in items)
+                                               NSString *titleStr = @"";
+                                               NSString *descStr = @"";
+                                               
+                                               NSArray *titleXmlSearch = [itemElem elementsForName:@"title"];
+                                               if([titleXmlSearch count] > 0)
                                                {
-                                                   NSString *type = nil;
-                                                   NSString *meal = nil;
+                                                   GDataXMLNode *titleXmlObj = [titleXmlSearch objectAtIndex:0];
+                                                   titleStr = [titleXmlObj stringValue];
+                                               }
+                                               
+                                               NSArray *descXmlSearch = [itemElem elementsForName:@"description"];
+                                               if([descXmlSearch count] > 0)
+                                               {
+                                                   GDataXMLNode *descXmlObj = [descXmlSearch objectAtIndex:0];
+                                                   descStr = [descXmlObj stringValue];
+                                               }
+                                               
+                                               if(![titleStr  isEqual: @""] && ![descStr  isEqual: @""])
+                                               {
+                                                   SHXLunchRow *newRow = [[SHXLunchRow alloc] init];
+                                                   [newRow setRestaurant:restaurant];
+                                                   [newRow setType:titleStr];
+                                                   [newRow setMeal:descStr];
                                                    
-                                                   
-                                                   if([item isKindOfClass:[NSDictionary class]])
-                                                   {
-                                                       NSDictionary *lunchItem = item;
-                                                       
-                                                       id name = [lunchItem objectForKey:@"Name"];
-                                                       if([name isKindOfClass:[NSString class]])
-                                                       {
-                                                           type = name;
-                                                       }
-                                                       
-                                                       id values = [lunchItem objectForKey:@"Values"];
-                                                       if([values isKindOfClass:[NSArray class]])
-                                                       {
-                                                           NSArray *mealInfos = values;
-                                                           
-                                                           for(id mealInfo in mealInfos)
-                                                           {
-                                                               if([mealInfo isKindOfClass:[NSDictionary class]])
-                                                               {
-                                                                   id language = [mealInfo objectForKey:@"LanguageName"];
-                                                                   
-                                                                   if([languageHandle isEqual:language])
-                                                                   {
-                                                                       id mealDescription = [mealInfo objectForKey:@"Value"];
-                                                                       if([mealDescription isKindOfClass:[NSString class]])
-                                                                       {
-                                                                           meal = mealDescription;
-                                                                       }
-                                                                   }
-                                                               }
-                                                           }
-                                                       }
-                                                   }
-                                                   
-                                                   if(type != nil && meal != nil) //We were able to get a full specification of a lunch
-                                                   {
-                                                       SHXLunchRow *lunchRow = [[SHXLunchRow alloc] init];
-                                                       [lunchRow setRestaurant:restaurant];
-                                                       [lunchRow setType:type];
-                                                       [lunchRow setMeal:meal];
-                                                       [allLunchRows addObject:lunchRow];
-                                                   }
+                                                   [allLunchRows addObject:newRow];
                                                }
                                            }
                                        }
+
                                    }
                                }
                                
