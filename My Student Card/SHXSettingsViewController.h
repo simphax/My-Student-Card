@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHXSettingsViewController : UIViewController
+@interface SHXSettingsViewController : UIViewController <UITableViewDataSource>
 
 - (IBAction) dismissModal:(id)sender;
+
+@property IBOutlet UITableView *tableView;
+@property IBOutlet UITextField *cardNumberTextField;
 
 @end

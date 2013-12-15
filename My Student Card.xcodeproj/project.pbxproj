@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F403038D183E7566003289EC /* SHXChalmersRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = F403038C183E7566003289EC /* SHXChalmersRestaurant.m */; };
+		F4030393183E7B6E003289EC /* SHXChalmersRestaurantDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F4030392183E7B6E003289EC /* SHXChalmersRestaurantDB.m */; };
+		F4144D3B185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */; };
 		F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BDA3C1828467F00650091 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F49FB9921844AE27001B2700 /* ChalmersRestaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = F49FB9911844AE27001B2700 /* ChalmersRestaurants.plist */; };
 		F4D3ADE918280F57005ABE1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADE818280F57005ABE1D /* Foundation.framework */; };
 		F4D3ADEB18280F57005ABE1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEA18280F57005ABE1D /* CoreGraphics.framework */; };
 		F4D3ADED18280F57005ABE1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D3ADEC18280F57005ABE1D /* UIKit.framework */; };
@@ -44,8 +47,13 @@
 /* Begin PBXFileReference section */
 		F403038B183E7566003289EC /* SHXChalmersRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersRestaurant.h; path = Providers/SHXChalmersRestaurant.h; sourceTree = "<group>"; };
 		F403038C183E7566003289EC /* SHXChalmersRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersRestaurant.m; path = Providers/SHXChalmersRestaurant.m; sourceTree = "<group>"; };
+		F4030391183E7B6E003289EC /* SHXChalmersRestaurantDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersRestaurantDB.h; path = Providers/SHXChalmersRestaurantDB.h; sourceTree = "<group>"; };
+		F4030392183E7B6E003289EC /* SHXChalmersRestaurantDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXChalmersRestaurantDB.m; path = Providers/SHXChalmersRestaurantDB.m; sourceTree = "<group>"; };
+		F4144D39185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXAutoFormatTextFieldDelegate.h; path = Libraries/SHXAutoFormatTextFieldDelegate.h; sourceTree = "<group>"; };
+		F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXAutoFormatTextFieldDelegate.m; path = Libraries/SHXAutoFormatTextFieldDelegate.m; sourceTree = "<group>"; };
 		F47BDA3B1828467F00650091 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataXMLNode.h; path = Libraries/GDataXML/GDataXMLNode.h; sourceTree = "<group>"; };
 		F47BDA3C1828467F00650091 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDataXMLNode.m; path = Libraries/GDataXML/GDataXMLNode.m; sourceTree = "<group>"; };
+		F49FB9911844AE27001B2700 /* ChalmersRestaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChalmersRestaurants.plist; sourceTree = "<group>"; };
 		F4D3ADE518280F57005ABE1D /* My Student Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Student Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D3ADE818280F57005ABE1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4D3ADEA18280F57005ABE1D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,9 +113,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4144D38185C91D5000CE2C8 /* Community based */ = {
+			isa = PBXGroup;
+			children = (
+				F4144D39185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.h */,
+				F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */,
+			);
+			name = "Community based";
+			sourceTree = "<group>";
+		};
 		F47BDA39182845EC00650091 /* External Code */ = {
 			isa = PBXGroup;
 			children = (
+				F4144D38185C91D5000CE2C8 /* Community based */,
 				F47BDA3A1828461F00650091 /* GDataXML */,
 			);
 			name = "External Code";
@@ -214,6 +232,9 @@
 				F4E8537F1829568C00B77D4C /* SHXChalmersLProvider.m */,
 				F403038B183E7566003289EC /* SHXChalmersRestaurant.h */,
 				F403038C183E7566003289EC /* SHXChalmersRestaurant.m */,
+				F4030391183E7B6E003289EC /* SHXChalmersRestaurantDB.h */,
+				F4030392183E7B6E003289EC /* SHXChalmersRestaurantDB.m */,
+				F49FB9911844AE27001B2700 /* ChalmersRestaurants.plist */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -311,6 +332,7 @@
 				F4D3AE0118280F57005ABE1D /* Images.xcassets in Resources */,
 				F4D3ADF318280F57005ABE1D /* InfoPlist.strings in Resources */,
 				F4E8538518295CEF00B77D4C /* SHXLunchRowViewController.xib in Resources */,
+				F49FB9921844AE27001B2700 /* ChalmersRestaurants.plist in Resources */,
 				F4D3ADFC18280F57005ABE1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +355,8 @@
 				F4E8537D1829563D00B77D4C /* SHXLunchRow.m in Sources */,
 				F4D3ADF918280F57005ABE1D /* SHXAppDelegate.m in Sources */,
 				F4E8538418295CEF00B77D4C /* SHXLunchRowViewController.m in Sources */,
+				F4030393183E7B6E003289EC /* SHXChalmersRestaurantDB.m in Sources */,
+				F4144D3B185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m in Sources */,
 				F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */,
 				F4D3AE2718281F25005ABE1D /* SHXChalmersBProvider.m in Sources */,
 				F4D3AE2218281CF6005ABE1D /* SHXSettingsViewController.m in Sources */,

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Locations</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Johanneberg</string>
+			<key>Restaurants</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>Linsen</string>
+					<key>Feed</key>
+					<string>http://cm.lskitchen.se/johanneberg/linsen/{lang}/{date}.rss</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Kårrestaurangen</string>
+					<key>Feed</key>
+					<string>http://cm.lskitchen.se/johanneberg/karrestaurangen/{lang}/{date}.rss</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Lindholmen</string>
+			<key>Restaurants</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>Kokboken</string>
+					<key>Feed</key>
+					<string>http://cm.lskitchen.se/lindholmen/kokboken/sv/2013-12-12.rss</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
