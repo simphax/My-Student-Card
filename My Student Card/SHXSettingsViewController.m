@@ -6,13 +6,19 @@
 //  Copyright (c) 2013 Simphax. All rights reserved.
 //
 
-#import "SHXAutoFormatTextFieldDelegate.h"
+
 #import "SHXSettingsViewController.h"
+
+#import "SHXAutoFormatTextFieldDelegate.h"
+#import "SHXChalmersRestaurantDB.h"
+#import "SHXChalmersLocation.h"
+#import "SHXChalmersRestaurant.h"
 
 @interface SHXSettingsViewController ()
 {
 @private
     SHXAutoFormatTextFieldDelegate *textFieldDelegate;
+    NSArray *restaurantLocations;
 }
 
 @end
@@ -22,6 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Might want to make this general (not only for chalmers)
+    SHXChalmersRestaurantDB *restaurantsDB = [[SHXChalmersRestaurantDB alloc] init];
+    restaurantLocations = [restaurantsDB getLocations];
     
     textFieldDelegate = [[SHXAutoFormatTextFieldDelegate alloc] init];
     _cardNumberTextField.delegate = textFieldDelegate;
@@ -45,24 +55,24 @@
     static NSString *cellIdentifier = @"RestaurantCell";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
-    cell.textLabel.text = @"Linsen";
+    cell.textLabel.text = [[[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]] name];
     
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return [restaurantLocations count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [[[restaurantLocations objectAtIndex:section] restaurants] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Johanneberg";
+    return [[restaurantLocations objectAtIndex:section] name];
 }
 
 - (IBAction) dismissModal:(id)sender

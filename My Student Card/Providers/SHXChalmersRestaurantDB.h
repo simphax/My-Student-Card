@@ -10,4 +10,6 @@
 
 @interface SHXChalmersRestaurantDB : NSObject
 
+- (NSArray*)getLocations;
+
 @end
