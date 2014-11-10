@@ -77,6 +77,8 @@
 
 - (IBAction) dismissModal:(id)sender
 {
+    //Save settings
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

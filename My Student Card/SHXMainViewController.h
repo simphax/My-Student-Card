@@ -20,4 +20,7 @@
 
 @property IBOutlet UIView *lunchesView;
 
+@property (weak, nonatomic) IBOutlet UIView *cardBalanceView;
+@property (weak, nonatomic) IBOutlet UIView *cardErrorView;
+
 @end

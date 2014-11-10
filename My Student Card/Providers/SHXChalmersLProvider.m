@@ -34,7 +34,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormatter stringFromDate:date];
     
-    NSString *restaurantName = @"Kårrestaurangen";
+    NSString *restaurantName = [currentRestaurant name];
     NSString *languageHandle = @"sv";
     NSString *urlString = [NSString stringWithFormat:[currentRestaurant feedUrl],languageHandle,dateStr];
     

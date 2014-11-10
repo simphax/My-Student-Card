@@ -28,6 +28,11 @@
 {
     [super viewDidLoad];
     
+    //Read from settings
+    //card number
+    //favourite restaurant
+    //current restaurant (selected)
+    
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
@@ -87,15 +92,21 @@
     [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
         if(error)
         {
-            [[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
+            //[[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
+            NSLog(@"ERROR: %i",[error code]);
+            [[self cardBalanceView] setHidden:YES];
+            [[self cardErrorView] setHidden:NO];
         }
         else
         {
             [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
-            
-            [[self refreshStatusView] setHidden:YES];
-            [[self contentView] setHidden:NO];
+            [[self cardBalanceView] setHidden:NO];
+            [[self cardErrorView] setHidden:YES];
         }
+        
+        //TODO: Seperate spinners for balance and lunch
+        [[self refreshStatusView] setHidden:YES];
+        [[self contentView] setHidden:NO];
     }];
     
     [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
