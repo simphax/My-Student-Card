@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHXLunchRowViewController">
             <connections>
                 <outlet property="mealLabel" destination="1dz-QP-1rf" id="01y-Wz-XcA"/>
-                <outlet property="typeLabel" destination="7m9-kG-oXg" id="8T6-cW-xXc"/>
+                <outlet property="typeLabel" destination="EdA-Uq-Zsc" id="OsZ-ZT-S6X"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -16,23 +17,44 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="XPRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7m9-kG-oXg">
-                    <rect key="frame" x="20" y="20" width="280" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="KÅRRESTAURANGEN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7m9-kG-oXg">
+                    <rect key="frame" x="20" y="20" width="137" height="21"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kyckling, &quot;grön curry&quot;, jasminris" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-QP-1rf">
-                    <rect key="frame" x="20" y="38" width="280" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
-                    <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Kyckling, &quot;grön curry&quot;, jasminris, something else, sopmething else" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-QP-1rf">
+                    <rect key="frame" x="20" y="41" width="280" height="49"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.49449573860000001" green="0.0003288599823" blue="0.1946585072" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XPRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-Uq-Zsc">
+                    <rect key="frame" x="165" y="20" width="54" height="21"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.49449573860000001" green="0.0003288599823" blue="0.1946585072" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="1dz-QP-1rf" secondAttribute="centerX" id="1pS-lZ-fwQ"/>
+                <constraint firstItem="EdA-Uq-Zsc" firstAttribute="top" secondItem="7m9-kG-oXg" secondAttribute="top" id="Ojb-Ii-gki"/>
+                <constraint firstItem="1dz-QP-1rf" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="QKc-8W-8O6"/>
+                <constraint firstItem="1dz-QP-1rf" firstAttribute="top" secondItem="7m9-kG-oXg" secondAttribute="bottom" id="TN8-bn-hyz"/>
+                <constraint firstAttribute="trailing" secondItem="1dz-QP-1rf" secondAttribute="trailing" constant="20" id="dOb-WS-0TG"/>
+                <constraint firstAttribute="bottom" secondItem="1dz-QP-1rf" secondAttribute="bottom" id="hPd-VH-47b"/>
+                <constraint firstItem="7m9-kG-oXg" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="nSp-MH-x2Z"/>
+                <constraint firstItem="7m9-kG-oXg" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="oZw-K7-Fvh"/>
+                <constraint firstItem="EdA-Uq-Zsc" firstAttribute="leading" secondItem="7m9-kG-oXg" secondAttribute="trailing" constant="8" id="rz2-U7-FOy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

@@ -14,6 +14,8 @@
 #import "SHXChalmersLocation.h"
 #import "SHXChalmersRestaurant.h"
 
+#import "NSString+NRStringFormatting.h"
+
 @interface SHXSettingsViewController ()
 {
 @private
@@ -41,6 +43,9 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    NSString *cardNumber = [[[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"] stringByFormattingAsCreditCardNumber];
+    [_cardNumberTextField setText:cardNumber];
 }
 
 - (void)didReceiveMemoryWarning
