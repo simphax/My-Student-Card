@@ -78,7 +78,16 @@
 - (IBAction) dismissModal:(id)sender
 {
     //Save settings
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    //Strip away spaces
+    NSString* cardNumberString = [[self.cardNumberTextField text] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [userDefaults setObject:cardNumberString
+                     forKey:@"cardNumber"];
+    [userDefaults synchronize];
+    
+    //Reload main view...
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

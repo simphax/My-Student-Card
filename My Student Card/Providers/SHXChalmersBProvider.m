@@ -29,7 +29,8 @@
 
 -(void)getBalanceWithCompletionHandler:(void(^)(int balance, NSError *error))handler
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://kortladdning.chalmerskonferens.se/bgw.aspx?type=getCardAndArticles&card=%@",cardNumber];
+    NSString *urlString = [NSString stringWithFormat:@"http://kortladdning.chalmerskonferens.se/bgw.aspx?type=getCardAndArticles&iscardid=True&card=%@",cardNumber];
+    //NSLog(@"%@",urlString);
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
@@ -40,6 +41,8 @@
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                
+                               //NSLog(@"%@",error);
+                               
                                int theBalance = -1;
                                
                                if(!error)
@@ -48,6 +51,7 @@
                                                                                           options:0 error:&error];
                                    if(!error)
                                    {
+                                       //NSLog(@"%@",[doc rootElement]);
                                        NSArray *balanceXmlSearch = [doc nodesForXPath:@"//ExtendedInfos/ExtendedInfo[@Name=\"Kortvarde\"]" error:&error];
                                        
                                        if([balanceXmlSearch count] > 0)

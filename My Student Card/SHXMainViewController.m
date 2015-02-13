@@ -33,7 +33,9 @@
     //favourite restaurant
     //current restaurant (selected)
     
-    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
+    
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
     
@@ -88,6 +90,10 @@
 {
     [[self contentView] setHidden:YES];
     [[self refreshStatusView] setHidden:NO];
+    
+    NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
+    
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
     [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
         if(error)
