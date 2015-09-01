@@ -16,8 +16,8 @@
 {
 @private
     id<SHXIBalanceProvider> balanceProvider;
-    id<SHXILunchProvider> lunchProvider;
-    NSArray *lunchRows;
+    NSMutableArray *lunchProviders;
+    NSMutableArray *lunchRows;
 }
 
 @end
@@ -33,16 +33,33 @@
     //favourite restaurant
     //current restaurant (selected)
     
+    lunchProviders = [[NSMutableArray alloc] init];
+    
     NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
+    
+    [_cardNumberLabel setText:cardNumber];
+    [_cardOwnerLabel setText:@"Simon Nilsson"];
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
     
     [restaurant setName:@"Kokboken"];
     [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}"];
     
+    id<SHXILunchProvider> lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
+    
+    [lunchProviders addObject:lunchProvider];
+    
+    
+    restaurant = [[SHXChalmersRestaurant alloc] init];
+    
+    [restaurant setName:@"L's Kitchen"];
+    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date={date}"];
+    
     lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
+    
+    [lunchProviders addObject:lunchProvider];
     
     //Register for notification of when the application is resumed.
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -115,16 +132,25 @@
         [[self contentView] setHidden:NO];
     }];
     
-    [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
+    lunchRows = [[NSMutableArray alloc] init];
+    
+    int __block lunchProviderResults = 0;
+    
+    for(id<SHXILunchProvider> lunchProvider in lunchProviders) {
+        [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
+            
+            [lunchRows addObjectsFromArray:lunchList];
+            
+            lunchProviderResults++;
+            if(lunchProviderResults == [lunchProviders count]) {
+                SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
+                NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+                
+                [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            }
+        }];
         
-        lunchRows = lunchList;
-        
-        SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
-        NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-        
-        [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-    }];
+    }
     
 }
 

@@ -96,14 +96,14 @@
                                                     <constraint firstAttribute="height" constant="89" id="lDN-zm-6m1"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simon Nilsson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-p5-gdm">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stewie Griffin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-p5-gdm">
                                                 <rect key="frame" x="20" y="24" width="210" height="43"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="37"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3819 2761 2571 7221" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSu-Pn-xrn">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#### #### #### ####" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSu-Pn-xrn">
                                                 <rect key="frame" x="20" y="67" width="176" height="21"/>
                                                 <animations/>
                                                 <constraints>
@@ -236,6 +236,8 @@
                         <outlet property="balanceLabel" destination="GVD-kC-DLS" id="1wT-NL-5gf"/>
                         <outlet property="cardBalanceView" destination="Q1l-Eq-uaO" id="Eli-nG-O3t"/>
                         <outlet property="cardErrorView" destination="5tx-r7-U2x" id="eQg-8k-n51"/>
+                        <outlet property="cardNumberLabel" destination="dSu-Pn-xrn" id="RY6-3K-m6R"/>
+                        <outlet property="cardOwnerLabel" destination="oGL-p5-gdm" id="xug-Vp-0Om"/>
                         <outlet property="contentView" destination="Wjy-Kc-k94" id="Twi-ef-Rq5"/>
                         <outlet property="lunchesView" destination="FGG-Dl-VEi" id="vVf-ON-kvt"/>
                         <outlet property="refreshStatusView" destination="5wM-3f-wSO" id="ZOR-SV-r9N"/>

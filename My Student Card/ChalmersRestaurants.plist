@@ -30,6 +30,12 @@
 			<array>
 				<dict>
 					<key>Name</key>
+					<string>L&apos;s Kitchen</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
 					<string>Kokboken</string>
 					<key>Feed</key>
 					<string>http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}</string>
