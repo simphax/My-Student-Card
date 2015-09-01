@@ -32,7 +32,7 @@
 					<key>Name</key>
 					<string>Kokboken</string>
 					<key>Feed</key>
-					<string>http://cm.lskitchen.se/lindholmen/kokboken/sv/2013-12-12.rss</string>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}</string>
 				</dict>
 			</array>
 		</dict>

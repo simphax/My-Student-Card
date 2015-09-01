@@ -39,8 +39,8 @@
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
     
-    [restaurant setName:@"Kårrestaurangen"];
-    [restaurant setFeedUrl:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/%@.rss"];
+    [restaurant setName:@"Kokboken"];
+    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true"];
     
     lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
     
