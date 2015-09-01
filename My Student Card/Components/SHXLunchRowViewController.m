@@ -30,6 +30,7 @@
     
     [[self mealLabel] setText:[[self lunchRow] meal]];
     [[self typeLabel] setText:[[[self lunchRow] type] uppercaseString]];
+    [[self restaurantLabel] setText:[[[self lunchRow] restaurant] uppercaseString]];
 }
 
 - (void)didReceiveMemoryWarning
