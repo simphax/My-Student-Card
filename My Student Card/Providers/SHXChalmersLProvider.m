@@ -83,6 +83,11 @@
                                                    SHXLunchRow *newRow = [[SHXLunchRow alloc] init];
                                                    [newRow setRestaurant:restaurantName];
                                                    [newRow setType:titleStr];
+                                                   
+                                                   NSError *error = nil;
+                                                   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@[0-9]+$" options:NSRegularExpressionCaseInsensitive error:&error];
+                                                   descStr = [regex stringByReplacingMatchesInString:descStr options:0 range:NSMakeRange(0, [descStr length]) withTemplate:@""];
+                                                   
                                                    [newRow setMeal:descStr];
                                                    
                                                    [allLunchRows addObject:newRow];
