@@ -40,7 +40,7 @@
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
     
     [restaurant setName:@"Kokboken"];
-    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true"];
+    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}"];
     
     lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
     

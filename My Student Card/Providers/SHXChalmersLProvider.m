@@ -36,7 +36,7 @@
     
     NSString *restaurantName = [currentRestaurant name];
     NSString *languageHandle = @"sv";
-    NSString *urlString = [NSString stringWithFormat:[currentRestaurant feedUrl],languageHandle,dateStr];
+    NSString *urlString = [[[[currentRestaurant feedUrl] stringByReplacingOccurrencesOfString:@"{date}" withString:dateStr] stringByReplacingOccurrencesOfString:@"{lang}" withString:languageHandle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
