@@ -31,21 +31,21 @@
                     <rect key="frame" x="20" y="20" width="9.5" height="20.5"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.1112146812" green="0.55702646060000005" blue="0.69267424740000005" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Kyckling, &quot;grön curry&quot;, jasminris, something else, sopmething else" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-QP-1rf">
                     <rect key="frame" x="20" y="40.5" width="280" height="49.5"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.49449573860000001" green="0.0003288599823" blue="0.1946585072" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.078754837737174566" green="0.40112599485780104" blue="0.49957051701570676" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XPRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-Uq-Zsc">
                     <rect key="frame" x="37.5" y="20" width="53.5" height="20.5"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.49449573860000001" green="0.0003288599823" blue="0.1946585072" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.078822543619701313" green="0.40147084465073568" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

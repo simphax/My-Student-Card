@@ -83,7 +83,7 @@
                                                         <rect key="frame" x="183" y="0.0" width="117" height="89"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="44"/>
-                                                        <color key="textColor" red="0.73641304350000003" green="0.0" blue="0.2835966748" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.1112146812" green="0.55702646060000005" blue="0.69267424740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -213,7 +213,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.72941176470000002" green="0.070588235289999995" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.097686530040998101" green="0.5180309827667704" blue="0.64639423076923075" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Wjy-Kc-k94" secondAttribute="trailing" id="016-dr-gWA"/>
