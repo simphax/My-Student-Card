@@ -21,7 +21,7 @@
 @private
     SHXAutoFormatTextFieldDelegate *textFieldDelegate;
     NSArray *restaurantLocations;
-    NSMutableArray *selectedRestaurants;
+    NSMutableSet *selectedRestaurants;
     SHXChalmersRestaurantDB *restaurantsDB;
 }
 
@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     
-    selectedRestaurants = [[NSMutableArray alloc] init];
+    selectedRestaurants = [[NSMutableSet alloc] init];
     
     //Might want to make this general (not only for chalmers)
     restaurantsDB = [[SHXChalmersRestaurantDB alloc] init];
@@ -52,6 +52,13 @@
     
     NSString *cardNumber = [[[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"] stringByFormattingAsCreditCardNumber];
     [_cardNumberTextField setText:cardNumber];
+    
+    
+    NSData *serializedSelectedRestaurants = [[NSUserDefaults standardUserDefaults] dataForKey:@"selectedRestaurants"];
+    if(serializedSelectedRestaurants) {
+        [selectedRestaurants addObjectsFromArray:[SHXChalmersRestaurantDB unserializeRestaurants:serializedSelectedRestaurants]];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,8 +73,12 @@
     static NSString *cellIdentifier = @"RestaurantCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    
     SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
+    
+    if([selectedRestaurants containsObject:restaurant]) {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:0];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     
     cell.textLabel.text = [restaurant name];
     
@@ -98,7 +109,6 @@
     SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
     
     [selectedRestaurants addObject:restaurant];
-    
     NSLog(@"didSelectRowAtIndexPath");
 }
 
@@ -110,8 +120,6 @@
     SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
     
     [selectedRestaurants removeObject:restaurant];
-    
-    NSLog(@"didDeselectRowAtIndexPath");
 }
 
 -(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {

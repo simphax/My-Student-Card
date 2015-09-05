@@ -24,4 +24,20 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    } else if ([[other name] isEqualToString:[self name]] && [[other feedUrl] isEqualToString:[self feedUrl]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSUInteger)hash
+{
+    return [_name hash] + [_feedUrl hash];
+}
+
 @end
