@@ -11,5 +11,7 @@
 @interface SHXChalmersRestaurantDB : NSObject
 
 - (NSArray*)getLocations;
++ (NSData*)serializeRestaurants:(NSArray*)restaurantsArray;
++ (NSArray*)unserializeRestaurants:(NSData*)serializedRestaurants;
 
 @end

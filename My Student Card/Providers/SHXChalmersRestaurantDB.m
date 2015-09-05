@@ -62,4 +62,14 @@
     return allLocations;
 }
 
++(NSData*)serializeRestaurants:(NSArray*)restaurantsArray
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:restaurantsArray];
+}
+
++(NSArray*)unserializeRestaurants:(NSData*)serializedRestaurants
+{
+    return [NSKeyedUnarchiver unarchiveObjectWithData:serializedRestaurants];
+}
+
 @end

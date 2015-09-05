@@ -34,6 +34,8 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormatter stringFromDate:date];
     
+    //dateStr = @"2015-09-04";
+    
     NSString *restaurantName = [currentRestaurant name];
     NSString *languageHandle = @"sv";
     NSString *urlString = [[[[currentRestaurant feedUrl] stringByReplacingOccurrencesOfString:@"{date}" withString:dateStr] stringByReplacingOccurrencesOfString:@"{lang}" withString:languageHandle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];

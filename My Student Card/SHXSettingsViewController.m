@@ -21,6 +21,8 @@
 @private
     SHXAutoFormatTextFieldDelegate *textFieldDelegate;
     NSArray *restaurantLocations;
+    NSMutableArray *selectedRestaurants;
+    SHXChalmersRestaurantDB *restaurantsDB;
 }
 
 @end
@@ -31,8 +33,10 @@
 {
     [super viewDidLoad];
     
+    selectedRestaurants = [[NSMutableArray alloc] init];
+    
     //Might want to make this general (not only for chalmers)
-    SHXChalmersRestaurantDB *restaurantsDB = [[SHXChalmersRestaurantDB alloc] init];
+    restaurantsDB = [[SHXChalmersRestaurantDB alloc] init];
     restaurantLocations = [restaurantsDB getLocations];
     
     textFieldDelegate = [[SHXAutoFormatTextFieldDelegate alloc] init];
@@ -41,6 +45,8 @@
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
+    
+    tap.cancelsTouchesInView = NO;
     
     [self.view addGestureRecognizer:tap];
     
@@ -58,9 +64,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"RestaurantCell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [[[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]] name];
+    
+    SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = [restaurant name];
     
     return cell;
 }
@@ -80,6 +89,35 @@
     return [[restaurantLocations objectAtIndex:section] name];
 }
 
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
+    
+    [selectedRestaurants addObject:restaurant];
+    
+    NSLog(@"didSelectRowAtIndexPath");
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    selectedCell.accessoryType = UITableViewCellAccessoryNone;
+    
+    SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
+    
+    [selectedRestaurants removeObject:restaurant];
+    
+    NSLog(@"didDeselectRowAtIndexPath");
+}
+
+-(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 - (IBAction) dismissModal:(id)sender
 {
     //Save settings
@@ -90,6 +128,8 @@
     
     [userDefaults setObject:cardNumberString
                      forKey:@"cardNumber"];
+    [userDefaults setObject: [SHXChalmersRestaurantDB serializeRestaurants:selectedRestaurants]
+                     forKey:@"selectedRestaurants"];
     [userDefaults synchronize];
     
     //Reload main view...

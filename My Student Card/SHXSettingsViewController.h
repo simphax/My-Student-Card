@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHXSettingsViewController : UIViewController <UITableViewDataSource>
+@interface SHXSettingsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 - (IBAction) dismissModal:(id)sender;
 

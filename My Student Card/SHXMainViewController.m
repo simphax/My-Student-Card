@@ -9,6 +9,7 @@
 #import "SHXMainViewController.h"
 #import "SHXChalmersBProvider.h"
 #import "SHXChalmersLProvider.h"
+#import "SHXChalmersRestaurantDB.h"
 #import "SHXLunchRow.h"
 #import "SHXLunchRowViewController.h"
 #import "NSString+NRStringFormatting.h"
@@ -42,25 +43,6 @@
     
     [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
     [_cardOwnerLabel setText:@""];
-    
-    SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
-    
-    [restaurant setName:@"Kokboken"];
-    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date=2015-09-04"];
-    
-    id<SHXILunchProvider> lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
-    
-    [lunchProviders addObject:lunchProvider];
-    
-    
-    restaurant = [[SHXChalmersRestaurant alloc] init];
-    
-    [restaurant setName:@"L's Kitchen"];
-    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date=2015-09-04"];
-    
-    lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
-    
-    [lunchProviders addObject:lunchProvider];
     
     //Register for notification of when the application is resumed.
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -100,6 +82,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [self refreshData:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,10 +93,68 @@
 
 - (IBAction) refreshData:(id)sender
 {
+    //Show spinner
     [[self contentView] setHidden:YES];
     [[self refreshStatusView] setHidden:NO];
     
+    
+    //Fetch lunch providers
+    
+    [lunchProviders removeAllObjects];
+    
     NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
+    NSData *serializedSelectedRestaurants = [[NSUserDefaults standardUserDefaults] dataForKey:@"selectedRestaurants"];
+    NSArray *selectedRestaurants;
+    if(serializedSelectedRestaurants == nil) {
+        selectedRestaurants = [[NSArray alloc] init];
+    } else {
+        selectedRestaurants = [SHXChalmersRestaurantDB unserializeRestaurants:serializedSelectedRestaurants];
+    }
+    
+    for(SHXChalmersRestaurant *restaurant in selectedRestaurants) {
+        id<SHXILunchProvider> lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
+        
+        [lunchProviders addObject:lunchProvider];
+    }
+    
+    lunchRows = [[NSMutableArray alloc] init];
+    
+    int __block lunchProviderResults = 0;
+    
+    if([lunchProviders count] > 0) {
+        for(id<SHXILunchProvider> lunchProvider in lunchProviders) {
+            [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
+                
+                [lunchRows addObjectsFromArray:lunchList];
+                
+                lunchProviderResults++;
+                if(lunchProviderResults == [lunchProviders count]) {
+                    
+                    if([lunchRows count] > 0) {
+                        [[self noLunchLabel] setHidden: YES];
+                        [[[self pageController] view] setHidden: NO];
+                        
+                        SHXLunchRowViewController *firstSpinnerViewController = [self lunchRowAtIndex:0];
+                        NSArray *firstSpinnerViewControllerArray = [NSArray arrayWithObject:firstSpinnerViewController];
+                        
+                        [[self pageController] setViewControllers:firstSpinnerViewControllerArray direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+                    } else {
+                        //No lunches today
+                        [[self noLunchLabel] setHidden:NO];
+                        [[[self pageController] view] setHidden:YES];
+                    }
+                }
+            }];
+            
+        }
+    } else {
+        //No lunch providers
+        [[self noLunchLabel] setHidden:NO];
+        [[[self pageController] view] setHidden:YES];
+    }
+    
+    
+    //Fetch balance
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
@@ -139,38 +180,7 @@
         [[self refreshStatusView] setHidden:YES];
         [[self contentView] setHidden:NO];
     }];
-    
-    lunchRows = [[NSMutableArray alloc] init];
-    
-    int __block lunchProviderResults = 0;
-    
-    for(id<SHXILunchProvider> lunchProvider in lunchProviders) {
-        [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
-            
-            [lunchRows addObjectsFromArray:lunchList];
-            
-            lunchProviderResults++;
-            if(lunchProviderResults == [lunchProviders count]) {
-                
-                if([lunchRows count] > 0) {
-                    
-                    
-                    [[self noLunchLabel] setHidden: YES];
-                    [[[self pageController] view] setHidden: NO];
-                    
-                    SHXLunchRowViewController *firstSpinnerViewController = [self lunchRowAtIndex:0];
-                    NSArray *firstSpinnerViewControllerArray = [NSArray arrayWithObject:firstSpinnerViewController];
-                    
-                    [[self pageController] setViewControllers:firstSpinnerViewControllerArray direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-                } else {
-                    //No lunches today
-                    [[self noLunchLabel] setHidden:NO];
-                    [[[self pageController] view] setHidden:YES];
-                }
-            }
-        }];
-        
-    }
+
     
 }
 
