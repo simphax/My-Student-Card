@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SHXChalmersRestaurant : NSObject
+@interface SHXChalmersRestaurant : NSObject <NSCoding>
 
 @property NSString *name;
 @property NSString *feedUrl;

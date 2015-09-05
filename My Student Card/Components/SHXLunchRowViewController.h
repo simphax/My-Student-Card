@@ -13,8 +13,9 @@
 
 @property SHXLunchRow *lunchRow;
 
-@property IBOutlet UILabel *mealLabel;
-@property IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mealLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantLabel;
 
 @property NSInteger pageIndex;
 

@@ -34,9 +34,11 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormatter stringFromDate:date];
     
-    NSString *restaurantName = @"Kårrestaurangen";
+    //dateStr = @"2015-09-04";
+    
+    NSString *restaurantName = [currentRestaurant name];
     NSString *languageHandle = @"sv";
-    NSString *urlString = [NSString stringWithFormat:[currentRestaurant feedUrl],languageHandle,dateStr];
+    NSString *urlString = [[[[currentRestaurant feedUrl] stringByReplacingOccurrencesOfString:@"{date}" withString:dateStr] stringByReplacingOccurrencesOfString:@"{lang}" withString:languageHandle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     
@@ -83,6 +85,11 @@
                                                    SHXLunchRow *newRow = [[SHXLunchRow alloc] init];
                                                    [newRow setRestaurant:restaurantName];
                                                    [newRow setType:titleStr];
+                                                   
+                                                   NSError *error = nil;
+                                                   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@[0-9]+$" options:NSRegularExpressionCaseInsensitive error:&error];
+                                                   descStr = [regex stringByReplacingMatchesInString:descStr options:0 range:NSMakeRange(0, [descStr length]) withTemplate:@""];
+                                                   
                                                    [newRow setMeal:descStr];
                                                    
                                                    [allLunchRows addObject:newRow];

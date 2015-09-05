@@ -10,6 +10,6 @@
 
 @protocol SHXIBalanceProvider <NSObject>
 
--(void)getBalanceWithCompletionHandler:(void(^)(int balance, NSError *error))handler;
+-(void)getBalanceWithCompletionHandler:(void(^)(NSString *name, NSNumber *balance, NSError *error))handler;
 
 @end

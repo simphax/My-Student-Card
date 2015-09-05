@@ -9,15 +9,17 @@
 #import "SHXMainViewController.h"
 #import "SHXChalmersBProvider.h"
 #import "SHXChalmersLProvider.h"
+#import "SHXChalmersRestaurantDB.h"
 #import "SHXLunchRow.h"
 #import "SHXLunchRowViewController.h"
+#import "NSString+NRStringFormatting.h"
 
 @interface SHXMainViewController ()
 {
 @private
     id<SHXIBalanceProvider> balanceProvider;
-    id<SHXILunchProvider> lunchProvider;
-    NSArray *lunchRows;
+    NSMutableArray *lunchProviders;
+    NSMutableArray *lunchRows;
 }
 
 @end
@@ -28,14 +30,19 @@
 {
     [super viewDidLoad];
     
-    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:@"3819276125717221"];
+    //Read from settings
+    //card number
+    //favourite restaurant
+    //current restaurant (selected)
     
-    SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
+    lunchProviders = [[NSMutableArray alloc] init];
     
-    [restaurant setName:@"Kårrestaurangen"];
-    [restaurant setFeedUrl:@"http://cm.lskitchen.se/johanneberg/karrestaurangen/%@/%@.rss"];
+    NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
     
-    lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
+    
+    [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
+    [_cardOwnerLabel setText:@""];
     
     //Register for notification of when the application is resumed.
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -65,7 +72,12 @@
     
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.7 green:0 blue:0.2 alpha:1.0];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.1 green:0.55 blue:0.7 alpha:1.0];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self refreshData:self];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -81,33 +93,94 @@
 
 - (IBAction) refreshData:(id)sender
 {
+    //Show spinner
     [[self contentView] setHidden:YES];
     [[self refreshStatusView] setHidden:NO];
     
-    [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
+    
+    //Fetch lunch providers
+    
+    [lunchProviders removeAllObjects];
+    
+    NSString *cardNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"];
+    NSData *serializedSelectedRestaurants = [[NSUserDefaults standardUserDefaults] dataForKey:@"selectedRestaurants"];
+    NSArray *selectedRestaurants;
+    if(serializedSelectedRestaurants == nil) {
+        selectedRestaurants = [[NSArray alloc] init];
+    } else {
+        selectedRestaurants = [SHXChalmersRestaurantDB unserializeRestaurants:serializedSelectedRestaurants];
+    }
+    
+    for(SHXChalmersRestaurant *restaurant in selectedRestaurants) {
+        id<SHXILunchProvider> lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
+        
+        [lunchProviders addObject:lunchProvider];
+    }
+    
+    lunchRows = [[NSMutableArray alloc] init];
+    
+    int __block lunchProviderResults = 0;
+    
+    if([lunchProviders count] > 0) {
+        for(id<SHXILunchProvider> lunchProvider in lunchProviders) {
+            [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
+                
+                [lunchRows addObjectsFromArray:lunchList];
+                
+                lunchProviderResults++;
+                if(lunchProviderResults == [lunchProviders count]) {
+                    
+                    if([lunchRows count] > 0) {
+                        [[self noLunchLabel] setHidden: YES];
+                        [[[self pageController] view] setHidden: NO];
+                        
+                        SHXLunchRowViewController *firstSpinnerViewController = [self lunchRowAtIndex:0];
+                        NSArray *firstSpinnerViewControllerArray = [NSArray arrayWithObject:firstSpinnerViewController];
+                        
+                        [[self pageController] setViewControllers:firstSpinnerViewControllerArray direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+                    } else {
+                        //No lunches today
+                        [[self noLunchLabel] setHidden:NO];
+                        [[[self pageController] view] setHidden:YES];
+                    }
+                }
+            }];
+            
+        }
+    } else {
+        //No lunch providers
+        [[self noLunchLabel] setHidden:NO];
+        [[[self pageController] view] setHidden:YES];
+    }
+    
+    
+    //Fetch balance
+    
+    balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
+    
+    [balanceProvider getBalanceWithCompletionHandler:^(NSString *name, NSNumber *balance, NSError *error) {
         if(error)
         {
-            [[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
+            //[[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
+            NSLog(@"ERROR: %i",[error code]);
+            [[self cardBalanceView] setHidden:YES];
+            [[self cardErrorView] setHidden:NO];
         }
         else
         {
-            [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+            [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",[balance intValue]]];
+            [[self cardBalanceView] setHidden:NO];
+            [[self cardErrorView] setHidden:YES];
             
-            [[self refreshStatusView] setHidden:YES];
-            [[self contentView] setHidden:NO];
+            [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
+            [_cardOwnerLabel setText:name];
         }
+        
+        //TODO: Seperate spinners for balance and lunch
+        [[self refreshStatusView] setHidden:YES];
+        [[self contentView] setHidden:NO];
     }];
-    
-    [lunchProvider getLunchesAt:[NSDate date] completionHandler:^(NSArray *lunchList, NSError *error) {
-        
-        lunchRows = lunchList;
-        
-        SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
-        NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-        
-        [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-    }];
+
     
 }
 

@@ -31,8 +31,11 @@
 - (void)testGetBalance
 {
     //We need something that waits for the asynchronus result.
-    [provider getBalanceWithCompletionHandler:^(int result) {
-        NSLog(@"Balance: %i",result);
+            NSLog(@"-------------------------");
+    [provider getBalanceWithCompletionHandler:^(int balance, NSError *error) {
+        NSLog(@"-------------------------");
+        NSLog(@"Balance: %i",balance);
+        NSLog(@"Error: %@",error);
     }];
 }
 

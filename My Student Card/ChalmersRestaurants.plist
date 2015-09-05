@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Locations</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Johanneberg</string>
+			<key>Restaurants</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>Restaurang Hyllan</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>J.A. Pripps Pub &amp; Café</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Express</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/express/Vänster.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Linsen</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Kårrestaurangen</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?date={date}</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Lindholmen</string>
+			<key>Restaurants</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>L&apos;s Resto</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>L&apos;s Kitchen</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Kokboken</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

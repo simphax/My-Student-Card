@@ -17,7 +17,13 @@
 @property IBOutlet UILabel *balanceLabel;
 @property IBOutlet UIView *contentView;
 @property IBOutlet UIView *refreshStatusView;
+@property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardOwnerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noLunchLabel;
 
 @property IBOutlet UIView *lunchesView;
+
+@property (weak, nonatomic) IBOutlet UIView *cardBalanceView;
+@property (weak, nonatomic) IBOutlet UIView *cardErrorView;
 
 @end
