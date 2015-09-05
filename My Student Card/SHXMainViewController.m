@@ -11,6 +11,7 @@
 #import "SHXChalmersLProvider.h"
 #import "SHXLunchRow.h"
 #import "SHXLunchRowViewController.h"
+#import "NSString+NRStringFormatting.h"
 
 @interface SHXMainViewController ()
 {
@@ -39,7 +40,7 @@
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
-    [_cardNumberLabel setText:cardNumber];
+    [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
     [_cardOwnerLabel setText:@"Simon Nilsson"];
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
@@ -112,7 +113,7 @@
     
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
-    [balanceProvider getBalanceWithCompletionHandler:^(int result, NSError *error) {
+    [balanceProvider getBalanceWithCompletionHandler:^(NSString *name, NSNumber *balance, NSError *error) {
         if(error)
         {
             //[[self balanceLabel] setText:[NSString stringWithFormat:@"ERROR: %i",[error code]]];
@@ -122,7 +123,7 @@
         }
         else
         {
-            [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",result]];
+            [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",[balance intValue]]];
             [[self cardBalanceView] setHidden:NO];
             [[self cardErrorView] setHidden:YES];
         }

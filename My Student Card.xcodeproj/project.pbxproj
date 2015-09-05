@@ -11,6 +11,7 @@
 		F4030393183E7B6E003289EC /* SHXChalmersRestaurantDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F4030392183E7B6E003289EC /* SHXChalmersRestaurantDB.m */; };
 		F408F4A31A8E5FA1000A55BD /* NSString+NRStringFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = F408F4A21A8E5FA1000A55BD /* NSString+NRStringFormatting.m */; };
 		F4144D3B185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */; };
+		F42EB3891B9B2EA200F81D66 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = F42EB3881B9B2EA200F81D66 /* NSString+URLEncode.m */; };
 		F47BDA3D1828467F00650091 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BDA3C1828467F00650091 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F496E90A185DD5E100F7D381 /* SHXChalmersLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F496E909185DD5E100F7D381 /* SHXChalmersLocation.m */; };
 		F49FB9921844AE27001B2700 /* ChalmersRestaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = F49FB9911844AE27001B2700 /* ChalmersRestaurants.plist */; };
@@ -56,6 +57,8 @@
 		F408F4A21A8E5FA1000A55BD /* NSString+NRStringFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NRStringFormatting.m"; path = "Libraries/NSString+NRStringFormatting.m"; sourceTree = "<group>"; };
 		F4144D39185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXAutoFormatTextFieldDelegate.h; path = Libraries/SHXAutoFormatTextFieldDelegate.h; sourceTree = "<group>"; };
 		F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXAutoFormatTextFieldDelegate.m; path = Libraries/SHXAutoFormatTextFieldDelegate.m; sourceTree = "<group>"; };
+		F42EB3871B9B2EA200F81D66 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncode.h"; path = "Libraries/NSString+URLEncode.h"; sourceTree = "<group>"; };
+		F42EB3881B9B2EA200F81D66 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncode.m"; path = "Libraries/NSString+URLEncode.m"; sourceTree = "<group>"; };
 		F47BDA3B1828467F00650091 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataXMLNode.h; path = Libraries/GDataXML/GDataXMLNode.h; sourceTree = "<group>"; };
 		F47BDA3C1828467F00650091 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDataXMLNode.m; path = Libraries/GDataXML/GDataXMLNode.m; sourceTree = "<group>"; };
 		F496E908185DD5E100F7D381 /* SHXChalmersLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXChalmersLocation.h; path = Providers/SHXChalmersLocation.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */,
 				F408F4A11A8E5FA1000A55BD /* NSString+NRStringFormatting.h */,
 				F408F4A21A8E5FA1000A55BD /* NSString+NRStringFormatting.m */,
+				F42EB3871B9B2EA200F81D66 /* NSString+URLEncode.h */,
+				F42EB3881B9B2EA200F81D66 /* NSString+URLEncode.m */,
 			);
 			name = "Community based";
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				F4D3ADF918280F57005ABE1D /* SHXAppDelegate.m in Sources */,
 				F4E8538418295CEF00B77D4C /* SHXLunchRowViewController.m in Sources */,
 				F496E90A185DD5E100F7D381 /* SHXChalmersLocation.m in Sources */,
+				F42EB3891B9B2EA200F81D66 /* NSString+URLEncode.m in Sources */,
 				F4030393183E7B6E003289EC /* SHXChalmersRestaurantDB.m in Sources */,
 				F4144D3B185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m in Sources */,
 				F4E853801829568C00B77D4C /* SHXChalmersLProvider.m in Sources */,
