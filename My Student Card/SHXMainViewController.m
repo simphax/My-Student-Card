@@ -41,12 +41,12 @@
     balanceProvider = [[SHXChalmersBProvider alloc] initWithCardNumber:cardNumber];
     
     [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
-    [_cardOwnerLabel setText:@"Simon Nilsson"];
+    [_cardOwnerLabel setText:@""];
     
     SHXChalmersRestaurant *restaurant = [[SHXChalmersRestaurant alloc] init];
     
     [restaurant setName:@"Kokboken"];
-    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date={date}"];
+    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS Feed.rss?date=2015-09-04"];
     
     id<SHXILunchProvider> lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
     
@@ -56,7 +56,7 @@
     restaurant = [[SHXChalmersRestaurant alloc] init];
     
     [restaurant setName:@"L's Kitchen"];
-    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date={date}"];
+    [restaurant setFeedUrl:@"http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?date=2015-09-04"];
     
     lunchProvider = [[SHXChalmersLProvider alloc] initWithRestaurant:restaurant];
     
@@ -126,6 +126,9 @@
             [[self balanceLabel] setText:[NSString stringWithFormat:@"%i kr",[balance intValue]]];
             [[self cardBalanceView] setHidden:NO];
             [[self cardErrorView] setHidden:YES];
+            
+            [_cardNumberLabel setText:[cardNumber stringByFormattingAsCreditCardNumber]];
+            [_cardOwnerLabel setText:name];
         }
         
         //TODO: Seperate spinners for balance and lunch
@@ -144,10 +147,22 @@
             
             lunchProviderResults++;
             if(lunchProviderResults == [lunchProviders count]) {
-                SHXLunchRowViewController *initialViewController = [self lunchRowAtIndex:0];
-                NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
                 
-                [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+                if([lunchRows count] > 0) {
+                    
+                    
+                    [[self noLunchLabel] setHidden: YES];
+                    [[[self pageController] view] setHidden: NO];
+                    
+                    SHXLunchRowViewController *firstSpinnerViewController = [self lunchRowAtIndex:0];
+                    NSArray *firstSpinnerViewControllerArray = [NSArray arrayWithObject:firstSpinnerViewController];
+                    
+                    [[self pageController] setViewControllers:firstSpinnerViewControllerArray direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+                } else {
+                    //No lunches today
+                    [[self noLunchLabel] setHidden:NO];
+                    [[[self pageController] view] setHidden:YES];
+                }
             }
         }];
         

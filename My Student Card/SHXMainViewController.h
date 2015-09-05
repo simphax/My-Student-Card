@@ -19,6 +19,7 @@
 @property IBOutlet UIView *refreshStatusView;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardOwnerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noLunchLabel;
 
 @property IBOutlet UIView *lunchesView;
 
