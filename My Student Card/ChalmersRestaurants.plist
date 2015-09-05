@@ -11,15 +11,33 @@
 			<array>
 				<dict>
 					<key>Name</key>
+					<string>Restaurang Hyllan</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>J.A. Pripps Pub &amp; Café</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Express</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/express/Vänster.rss?date={date}</string>
+				</dict>
+				<dict>
+					<key>Name</key>
 					<string>Linsen</string>
 					<key>Feed</key>
-					<string>http://cm.lskitchen.se/johanneberg/linsen/{lang}/{date}.rss</string>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?date={date}</string>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>Kårrestaurangen</string>
 					<key>Feed</key>
-					<string>http://cm.lskitchen.se/johanneberg/karrestaurangen/{lang}/{date}.rss</string>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?date={date}</string>
 				</dict>
 			</array>
 		</dict>
@@ -28,6 +46,12 @@
 			<string>Lindholmen</string>
 			<key>Restaurants</key>
 			<array>
+				<dict>
+					<key>Name</key>
+					<string>L&apos;s Resto</string>
+					<key>Feed</key>
+					<string>http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS Feed.rss?date={date}</string>
+				</dict>
 				<dict>
 					<key>Name</key>
 					<string>L&apos;s Kitchen</string>
