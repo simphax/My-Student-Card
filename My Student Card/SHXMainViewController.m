@@ -82,7 +82,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [self refreshData:self];
+    //If this is the first time using the app, go straight to setup
+    if([[NSUserDefaults standardUserDefaults] stringForKey:@"cardNumber"] == nil) {
+        [self performSegueWithIdentifier:@"EditSegue" sender:self];
+    } else {
+        [self refreshData:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning

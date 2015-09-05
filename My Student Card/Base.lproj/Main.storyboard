@@ -218,7 +218,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <segue destination="kTx-Ib-PqD" kind="modal" modalTransitionStyle="flipHorizontal" id="CRP-Sd-v4y"/>
+                                    <segue destination="kTx-Ib-PqD" kind="modal" identifier="EditSegue" modalTransitionStyle="flipHorizontal" id="CRP-Sd-v4y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -317,7 +317,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantCell" textLabel="h8G-1R-gST" style="IBUITableViewCellStyleDefault" id="qEI-fv-de1">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qEI-fv-de1" id="PGI-6y-6Fd">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

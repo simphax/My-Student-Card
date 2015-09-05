@@ -86,6 +86,7 @@
 
 -(void)getBalanceWithCompletionHandler:(void(^)(NSString *name, NSNumber *balance, NSError *error))handler
 {
+    if(!cardNumber) return handler(nil, nil, [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2003 userInfo:nil]);
     [self postData: ^(NSString *postString, NSError *error) {
         if(error) return handler(nil,nil,error);
         
