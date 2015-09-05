@@ -93,9 +93,13 @@
     pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.1 green:0.55 blue:0.7 alpha:1.0];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
+-(void) viewWillAppear:(BOOL)animated
 {
     [self refreshData:self];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
 }
 
 - (void)didReceiveMemoryWarning
