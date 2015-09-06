@@ -77,7 +77,9 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [self refreshData:self];
+    if(animated) { //This probably means we came from the settings view
+        [self refreshData:self];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
