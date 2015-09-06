@@ -28,7 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [[self mealLabel] setText:[[self lunchRow] meal]];
+    NSDictionary *attributes = [(NSAttributedString *)_mealLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
+    _mealLabel.attributedText = [[NSAttributedString alloc] initWithString:[[self lunchRow] meal] attributes:attributes];
+    
     [[self typeLabel] setText:[[[self lunchRow] type] uppercaseString]];
     [[self restaurantLabel] setText:[[[self lunchRow] restaurant] uppercaseString]];
 }

@@ -71,8 +71,8 @@
     [self.pageController didMoveToParentViewController:self];
     
     UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.1 green:0.55 blue:0.7 alpha:1.0];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.5];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.76 green:0 blue:0.32 alpha:0.5];
 }
 
 -(void) viewWillAppear:(BOOL)animated
