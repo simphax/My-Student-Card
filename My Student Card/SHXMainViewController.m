@@ -138,6 +138,12 @@
                 if(lunchProviderResults == [lunchProviders count]) {
                     
                     if([lunchRows count] > 0) {
+                        
+                        //Sort the lunches by restaurant name
+                        [lunchRows sortUsingComparator: ^(id obj1, id obj2) {
+                            return [[obj1 restaurant] compare:[obj2 restaurant]];
+                        }];
+                        
                         [[self noLunchLabel] setHidden: YES];
                         [[[self pageController] view] setHidden: NO];
                         
