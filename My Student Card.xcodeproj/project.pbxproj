@@ -57,6 +57,10 @@
 		F408F4A21A8E5FA1000A55BD /* NSString+NRStringFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NRStringFormatting.m"; path = "Libraries/NSString+NRStringFormatting.m"; sourceTree = "<group>"; };
 		F4144D39185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHXAutoFormatTextFieldDelegate.h; path = Libraries/SHXAutoFormatTextFieldDelegate.h; sourceTree = "<group>"; };
 		F4144D3A185C9240000CE2C8 /* SHXAutoFormatTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHXAutoFormatTextFieldDelegate.m; path = Libraries/SHXAutoFormatTextFieldDelegate.m; sourceTree = "<group>"; };
+		F415A3401BA237F200F89D24 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F415A3411BA237F200F89D24 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		F415A3421BA237F200F89D24 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F415A3431BA237F200F89D24 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F42EB3871B9B2EA200F81D66 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncode.h"; path = "Libraries/NSString+URLEncode.h"; sourceTree = "<group>"; };
 		F42EB3881B9B2EA200F81D66 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncode.m"; path = "Libraries/NSString+URLEncode.m"; sourceTree = "<group>"; };
 		F47BDA3B1828467F00650091 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataXMLNode.h; path = Libraries/GDataXML/GDataXMLNode.h; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = F4D3ADDC18280F57005ABE1D;
 			productRefGroup = F4D3ADE618280F57005ABE1D /* Products */;
@@ -412,6 +417,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B34BB21B9658C400E951D0 /* Base */,
+				F415A3401BA237F200F89D24 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4D3ADF218280F57005ABE1D /* en */,
+				F415A3421BA237F200F89D24 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -428,6 +435,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4D3ADFB18280F57005ABE1D /* Base */,
+				F415A3411BA237F200F89D24 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -436,6 +444,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4D3AE1118280F57005ABE1D /* en */,
+				F415A3431BA237F200F89D24 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

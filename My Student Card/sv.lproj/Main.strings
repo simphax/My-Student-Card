@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Refreshing Data..."; ObjectID = "4Gv-HR-lBS"; */
+"4Gv-HR-lBS.text" = "Uppdaterar...";
+
+/* Class = "UILabel"; text = "LUNCH TODAY"; ObjectID = "8TH-97-2kk"; */
+"8TH-97-2kk.text" = "DAGENS LUNCH";
+
+/* Class = "UILabel"; text = "10000 kr"; ObjectID = "GVD-kC-DLS"; */
+"GVD-kC-DLS.text" = "10000 kr";
+
+/* Class = "UITextField"; placeholder = "#### #### #### ####"; ObjectID = "Ogn-Dg-n87"; */
+"Ogn-Dg-n87.placeholder" = "#### #### #### ####";
+
+/* Class = "UILabel"; text = "BALANCE"; ObjectID = "S2t-V8-dh8"; */
+"S2t-V8-dh8.text" = "SALDO";
+
+/* Class = "UILabel"; text = "#### #### #### ####"; ObjectID = "dSu-Pn-xrn"; */
+"dSu-Pn-xrn.text" = "#### #### #### ####";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "h8G-1R-gST"; */
+"h8G-1R-gST.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "jTJ-yS-2wQ"; */
+"jTJ-yS-2wQ.normalTitle" = "Ändra";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "mXm-Fd-taK"; */
+"mXm-Fd-taK.normalTitle" = "Klar";
+
+/* Class = "UILabel"; text = "Stewie Griffin"; ObjectID = "oGL-p5-gdm"; */
+"oGL-p5-gdm.text" = "Stewie Griffin";
+
+/* Class = "UILabel"; text = "FAVORITE RESTAURANTS"; ObjectID = "spD-Ew-iQo"; */
+"spD-Ew-iQo.text" = "FAVORITRESTAURANGER";
+
+/* Class = "UILabel"; text = "NO VALID CARD"; ObjectID = "uCe-xu-u5J"; */
+"uCe-xu-u5J.text" = "EJ GILTIGT KORT";
+
+/* Class = "UILabel"; text = "NO LUNCH TODAY"; ObjectID = "w2K-sA-7ow"; */
+"w2K-sA-7ow.text" = "INGEN LUNCH IDAG";
+
+/* Class = "UILabel"; text = "Set up"; ObjectID = "xsy-dd-z9k"; */
+"xsy-dd-z9k.text" = "Inställningar";
+
+/* Class = "UIButton"; normalTitle = "Refresh"; ObjectID = "yZb-p9-WAF"; */
+"yZb-p9-WAF.normalTitle" = "Uppdatera";
+
+/* Class = "UILabel"; text = "CHALMERS STUDENT CARD NUMBER"; ObjectID = "z56-gp-Wok"; */
+"z56-gp-Wok.text" = "CHALMERS KÅRKORTSNUMMER";
