@@ -109,7 +109,7 @@
     SHXChalmersRestaurant *restaurant = [[[restaurantLocations objectAtIndex:[indexPath section]] restaurants] objectAtIndex:[indexPath row]];
     
     [selectedRestaurants addObject:restaurant];
-    NSLog(@"didSelectRowAtIndexPath");
+    //NSLog(@"didSelectRowAtIndexPath");
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

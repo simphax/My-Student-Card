@@ -131,7 +131,7 @@
                                    if(match == nil) return handler(nil,nil,[[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2001 userInfo:nil]);
                                    
                                    NSString *name = [htmlStr substringWithRange:[match rangeAtIndex:1]];
-                                   NSLog(@"Name: %@",name);
+                                   //NSLog(@"Name: %@",name);
                                    
                                    //Find card balance
                                    regex = [NSRegularExpression regularExpressionWithPattern:BALANCE_REGEX options:0 error:&error];
@@ -139,7 +139,7 @@
                                    if(match == nil) return handler(nil,nil,[[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2002 userInfo:nil]);
                                    
                                    NSNumber *balance = [NSNumber numberWithFloat:[[htmlStr substringWithRange:[match rangeAtIndex:1]] floatValue]];
-                                   NSLog(@"Balance: %@",balance);
+                                   //NSLog(@"Balance: %@",balance);
                                    
                                    return handler(name, balance, nil);
                                }
