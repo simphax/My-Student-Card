@@ -84,11 +84,10 @@
      ];
 }
 
--(void)getBalanceWithCompletionHandler:(void(^)(NSString *name, NSNumber *balance, NSError *error))handler
+-(void)login:(void(^)(NSError *error))handler
 {
-    if(!cardNumber) return handler(nil, nil, [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2003 userInfo:nil]);
     [self postData: ^(NSString *postString, NSError *error) {
-        if(error) return handler(nil,nil,error);
+        if(error) return handler(error);
         
         NSString *urlString = @"http://kortladdning3.chalmerskonferens.se/Default.aspx";
         NSURL *url = [[NSURL alloc] initWithString:urlString];
@@ -100,7 +99,29 @@
                                            queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                    
-                                   if(error) return handler(nil,nil,error);
+                                   if(error) return handler(error);
+                                   return handler(nil);
+                               }
+         ];
+    }];
+    
+}
+
+-(void)getBalanceWithCompletionHandler:(void(^)(NSString *name, NSNumber *balance, NSError *error))handler
+{
+    if(!cardNumber) return handler(nil, nil, [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2003 userInfo:nil]);
+    [self login:^(NSError *error) {
+        if(error) return handler(nil, nil, [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2004 userInfo:nil]);
+        
+        NSString *urlString = @"http://kortladdning3.chalmerskonferens.se/CardLoad_Order.aspx";
+        NSURL *url = [[NSURL alloc] initWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                             timeoutInterval:10.0];
+        
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                   if(error) return handler(nil, nil, [[NSError alloc] initWithDomain:@"com.simphax.MyStudentCard" code:2005 userInfo:nil]);
                                    
                                    NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                    
@@ -123,7 +144,12 @@
                                    return handler(name, balance, nil);
                                }
          ];
+        
     }];
 }
 
 @end
+     
+     
+     
+
